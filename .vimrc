@@ -1,7 +1,6 @@
+filetype off
 
-au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=8
-au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
-au BufRead,BufNewFile *.py,*.pyw set expandtab
+execute pathogen#infect()
 
 set nobackup
 set nowritebackup
@@ -10,28 +9,67 @@ set matchpairs+=<:>
 set noswapfile
 set tabstop=4
 set shiftwidth=4
+set nocompatible
 set softtabstop=4
 set autoindent
 set smarttab
+set showmode
 set report=0
-" marks: 1000 files, history lines: 1000 lines, search queries: 1000 patterns, registers: 1000
 set viminfo='1000,f1,:1000,/1000,<1000,s100
-" Swap directory to store temporary files
 set directory=$HOME/.vim/swapfiles,/var/tmp,/tmp,.
 set history=1000
 set undolevels=1000
 set confirm
 set updatetime=1500
-
 set encoding=utf-8
 set termencoding=utf-8
 set noerrorbells visualbell t_vb=
-
+set background=dark
 set hlsearch
 set ignorecase
 set smartcase
+set hidden
+set laststatus=2
+set number           " Show Line Numbers
+set numberwidth=4      " Width value of the Line Number Column
+set ruler
+set showmatch          " Shows matching brackets when text indicator is over them
+set scrolloff=5        " Show 5 lines of context around the cursor
+set cursorline
+set showcmd
+set ttyfast            " Improves redrawing for newer computers
+set backspace=indent,eol,start
+set gdefault
 
-set background=dark
+nnoremap / /\v
+vnoremap / /\v
+nnoremap <leader><space> :noh<cr>
+nnoremap ; :
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+let mapleader = ","
+nnoremap <leader>nw :%s/\s\+$//e<cr>:let @/=''<CR>
+nnoremap <leader>cssort ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
+nnoremap <leader>w :%s/\s\+$//<cr>:let @/=''<CR>
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+" nnoremap <leader>ct |NERDComToggleComment|
+" vnoremap <leader>ct |NERDComToggleComment|
+map <C-A> ggVG
+map <F2> :NERDTreeToggle<CR>
+nnoremap <silent> <Left>   :bn<CR>
+nnoremap <silent> <Right>  :bp<CR>
+
+map <Leader>bc :Bclose<CR>
+let g:NERDTreeChristmasTree = 1
+let g:NERDTreeCaseSensitiveSort = 1
+let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeWinPos = 'left'
+let g:NERDTreeWinSize = 50
+let g:NERDTreeShowBookmarks = 1
+let python_highlight_all=1
+
 if $TERM =~ "^xterm*"
     set t_Co=256
     colorscheme gummybears
@@ -48,81 +86,45 @@ else
     set t_Co=16
     colorscheme pablo
 endif
-set laststatus=2
-set number           " Show Line Numbers
-" set relativenumber     " Show Relative Line Numbers
-set numberwidth=4      " Width value of the Line Number Column
-set ruler
-set showmatch          " Shows matching brackets when text indicator is over them
-set scrolloff=5        " Show 5 lines of context around the cursor
-set cursorline
 
-set showcmd
-set ttyfast            " Improves redrawing for newer computers
+try
+	set switchbuf=usetab
+	set stal=2
+catch
+endtry
 
-	"Buffer Configuration {{{
-	" Specify the behaviour when switching between buffers
-	nnoremap <silent> <Left>   :bn<CR>
-	nnoremap <silent> <Right>  :bp<CR>
-	try
-		set switchbuf=usetab
-		set stal=2
-	catch
-	endtry
+command! Bclose call <SID>BufcloseCloseIt()
+function! <SID>BufcloseCloseIt()
+	let l:currentBufNum = bufnr("%")
+	let l:alternateBufNum = bufnr("#")
+	if buflisted(l:alternateBufNum)
+		buffer #
+	else
+		bnext
+	endif
+	if bufnr("%") == l:currentBufNum
+		new
+	endif
+	if buflisted(l:currentBufNum)
+		execute("bdelete! ".l:currentBufNum)
+	endif
+endfunction
 
-	map <Leader>bc :Bclose<CR>
-	command! Bclose call <SID>BufcloseCloseIt()
-	function! <SID>BufcloseCloseIt()
-		let l:currentBufNum = bufnr("%")
-		let l:alternateBufNum = bufnr("#")
-
-		if buflisted(l:alternateBufNum)
-			buffer #
-		else
-			bnext
-		endif
-
-		if bufnr("%") == l:currentBufNum
-			new
-		endif
-
-		if buflisted(l:currentBufNum)
-			execute("bdelete! ".l:currentBufNum)
-		endif
-	endfunction
-
-	" }}}
-
-	nnoremap <leader>nw :%s/\s\+$//e<cr>:let @/=''<CR>
-	nnoremap <leader>cssort ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
-	map <C-A> ggVG
 highlight BadWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
+au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=8
+au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
+au BufRead,BufNewFile *.py,*.pyw set expandtab
 au BufRead,BufNewFile *.py,*.pyw set tags+=$HOME/.vim/tags/python.ctags
 au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
 
 autocmd FileType python set omnifunc=pythoncomplete
-
-set backspace=indent,eol,start
-
-let python_highlight_all=1
-syntax on
-
-" set foldmethod=indent
 autocmd BufWritePost *.py call Flake8()
-execute pathogen#infect()
 
+syntax on
 filetype indent on
 filetype on
-filetype plugin indent on
+filetype plugin on
 
-map <F2> :NERDTreeToggle<CR>
 
-	let g:NERDTreeChristmasTree = 1
-	let g:NERDTreeCaseSensitiveSort = 1
-	let g:NERDTreeQuitOnOpen = 1
-	let g:NERDTreeWinPos = 'left'
-	let g:NERDTreeWinSize = 50
-	let g:NERDTreeShowBookmarks = 1
