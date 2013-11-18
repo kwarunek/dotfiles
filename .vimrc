@@ -45,9 +45,6 @@ nnoremap / /\v
 vnoremap / /\v
 nnoremap <leader><space> :noh<cr>
 nnoremap ; :
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
 
 let mapleader = ","
 nnoremap <leader>nw :%s/\s\+$//e<cr>:let @/=''<CR>
@@ -60,7 +57,14 @@ map <C-A> ggVG
 map <F2> :NERDTreeToggle<CR>
 nnoremap <silent> <Left>   :bn<CR>
 nnoremap <silent> <Right>  :bp<CR>
-
+map <F1> :call ToggleBg()<CR>
+function! ToggleBg()
+    if &background == 'dark'
+	set bg=light
+    else
+        set bg=dark
+    endif
+endfunc
 map <Leader>bc :Bclose<CR>
 let g:NERDTreeChristmasTree = 1
 let g:NERDTreeCaseSensitiveSort = 1
@@ -69,7 +73,14 @@ let g:NERDTreeWinPos = 'left'
 let g:NERDTreeWinSize = 50
 let g:NERDTreeShowBookmarks = 1
 let python_highlight_all=1
-
+" let g:syntastic_auto_jump = 1
+" let g:syntastic_mode_map = { 'mode': 'active',
+"                               \ 'active_filetypes': ['yaml','json'],
+"                               \ 'passive_filetypes': [] }
+"let g:syntastic_python_checkers = ['flake8']
+"let g:syntastic_json_checkers = ['jsonlint']
+"let g:syntastic_yaml_checkers = ['jsyaml']
+"let g:syntastic_php_checkers = ['php']
 if $TERM =~ "^xterm*"
     set t_Co=256
     colorscheme gummybears
@@ -88,8 +99,8 @@ else
 endif
 
 try
-	set switchbuf=usetab
-	set stal=2
+    set switchbuf=usetab
+    set stal=2
 catch
 endtry
 
@@ -109,10 +120,9 @@ function! <SID>BufcloseCloseIt()
 		execute("bdelete! ".l:currentBufNum)
 	endif
 endfunction
-
 highlight BadWhitespace ctermbg=red guibg=red
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+au BufRead,BufNewFile *.json,*.js,*.yaml,*.php,*.css,*.less,*.scss,*.xml,*.pm,*.rb,*.inc,*.py,*.pyw match BadWhitespace /^\t\+/
+au BufRead,BufNewFile *.json,*.js,*.yaml,*.php,*.css,*.less,*.scss,*.xml,*.pm,*.rb,*.inc,*.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=8
 au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
 au BufRead,BufNewFile *.py,*.pyw set expandtab
