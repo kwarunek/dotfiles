@@ -1,4 +1,4 @@
-#!/bn/bash
+#!/bin/bash
 
 
 sudo pip install flake8
