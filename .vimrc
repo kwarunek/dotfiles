@@ -130,6 +130,7 @@ au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
 au BufRead,BufNewFile *.py,*.pyw set expandtab
 au BufRead,BufNewFile *.py,*.pyw set tags+=$HOME/.vim/tags/python.ctags
 au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
+au BufRead,BufNewFile *.md set filetype=markdown
 
 autocmd FileType python set omnifunc=pythoncomplete
 autocmd BufWritePost *.py call Flake8()
