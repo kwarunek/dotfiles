@@ -11,6 +11,8 @@ shopt -s checkwinsize
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
 HISTFILESIZE=100000
+PROMPT_COMMAND='history -a'
+
 export EDITOR="vim"
 
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
