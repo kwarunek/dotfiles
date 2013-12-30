@@ -54,5 +54,6 @@ extract () {
       echo "'$1' is not a valid file!"
   fi
 }
-fi
+
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh
+[[ -s ~/.rvm/scripts/rvmi ]] && . ~/.rvm/scripts/rvmi
