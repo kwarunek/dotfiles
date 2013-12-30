@@ -56,4 +56,4 @@ extract () {
 }
 
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh
-[[ -s ~/.rvm/scripts/rvmi ]] && . ~/.rvm/scripts/rvmi
+[[ -s ~/.rvm/scripts/rvm ]] && . ~/.rvm/scripts/rvm
