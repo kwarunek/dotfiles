@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=vboxtray
+Comment=Virtualbox tray app
+Exec=vboxtray %U
+Icon=virtualbox.png
+Terminal=false
+Type=Application
+Encoding=UTF-8
