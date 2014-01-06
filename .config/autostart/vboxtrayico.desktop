@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=vboxtray
+Name=vboxtrayico
 Comment=Virtualbox tray app
-Exec=vboxtray %U
+Exec=vboxtrayico %U
 Icon=virtualbox.png
 Terminal=false
 Type=Application
