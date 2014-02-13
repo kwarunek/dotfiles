@@ -46,6 +46,8 @@ vnoremap / /\v
 nnoremap <leader><space> :noh<cr>
 nnoremap ; :
 
+cmap w!! w !sudo tee >/dev/null %
+
 let mapleader = ","
 nnoremap <leader>nw :%s/\s\+$//e<cr>:let @/=''<CR>
 nnoremap <leader>cssort ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
@@ -129,11 +131,11 @@ au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=8
 au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
 au BufRead,BufNewFile *.py,*.pyw set expandtab
 au BufRead,BufNewFile *.py,*.pyw set tags+=$HOME/.vim/tags/python.ctags
-au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
+au BufNewFile *.py,*.pyw,*.c,*.h,*.pm,*.sh set fileformat=unix
 au BufRead,BufNewFile *.md set filetype=markdown
 
 autocmd FileType python set omnifunc=pythoncomplete
-autocmd BufWritePost *.py call Flake8()
+"autocmd BufWritePost *.py call Flake8()
 
 syntax on
 filetype indent on
