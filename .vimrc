@@ -77,6 +77,7 @@ let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeShowHidden=0
 let g:NERDTreeIgnore=['\.pyc','\~$','\.swo$','\.swp$','\.git','\.hg','\.svn','\.bzr']
 let python_highlight_all=1
+let g:airline#extensions#tabline#enabled = 1
 " let g:syntastic_auto_jump = 1
 " let g:syntastic_mode_map = { 'mode': 'active',
 "                               \ 'active_filetypes': ['yaml','json'],
