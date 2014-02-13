@@ -10,6 +10,7 @@ cd ~/.vim/bundle
 git clone https://github.com/nvie/vim-flake8.git
 git clone https://github.com/scrooloose/nerdtree.git
 git clone https://github.com/scrooloose/nerdcommenter.git
+git clone https://github.com/bling/vim-airline.git
 cd /tmp
 git clone https://github.com/jelera/vim-gummybears-colorscheme.git vimgummybears
 cp -r vimgummybears/colors/* ~/.vim/colors

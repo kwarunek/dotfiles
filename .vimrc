@@ -46,6 +46,8 @@ vnoremap / /\v
 nnoremap <leader><space> :noh<cr>
 nnoremap ; :
 
+cmap w!! w !sudo tee >/dev/null %
+
 let mapleader = ","
 nnoremap <leader>nw :%s/\s\+$//e<cr>:let @/=''<CR>
 nnoremap <leader>cssort ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
@@ -75,6 +77,7 @@ let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeShowHidden=0
 let g:NERDTreeIgnore=['\.pyc','\~$','\.swo$','\.swp$','\.git','\.hg','\.svn','\.bzr']
 let python_highlight_all=1
+let g:airline#extensions#tabline#enabled = 1
 " let g:syntastic_auto_jump = 1
 " let g:syntastic_mode_map = { 'mode': 'active',
 "                               \ 'active_filetypes': ['yaml','json'],
@@ -129,11 +132,11 @@ au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=8
 au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
 au BufRead,BufNewFile *.py,*.pyw set expandtab
 au BufRead,BufNewFile *.py,*.pyw set tags+=$HOME/.vim/tags/python.ctags
-au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
+au BufNewFile *.py,*.pyw,*.c,*.h,*.pm,*.sh set fileformat=unix
 au BufRead,BufNewFile *.md set filetype=markdown
 
 autocmd FileType python set omnifunc=pythoncomplete
-autocmd BufWritePost *.py call Flake8()
+"autocmd BufWritePost *.py call Flake8()
 
 syntax on
 filetype indent on
