@@ -13,7 +13,7 @@ set nocompatible
 set softtabstop=4
 set autoindent
 set smarttab
-set showmode
+set noshowmode
 set report=0
 set viminfo='1000,f1,:1000,/1000,<1000,s100
 set directory=$HOME/.vim/swapfiles,/var/tmp,/tmp,.
