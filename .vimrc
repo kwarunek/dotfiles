@@ -41,6 +41,10 @@ set ttyfast            " Improves redrawing for newer computers
 set backspace=indent,eol,start
 set gdefault
 
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <leader><space> :noh<cr>
@@ -128,9 +132,6 @@ endfunction
 highlight BadWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile *.json,*.js,*.yaml,*.php,*.css,*.less,*.scss,*.xml,*.pm,*.rb,*.inc,*.py,*.pyw match BadWhitespace /^\t\+/
 au BufRead,BufNewFile *.json,*.js,*.yaml,*.php,*.css,*.less,*.scss,*.xml,*.pm,*.rb,*.inc,*.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=8
-au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
-au BufRead,BufNewFile *.py,*.pyw set expandtab
 au BufRead,BufNewFile *.py,*.pyw set tags+=$HOME/.vim/tags/python.ctags
 au BufNewFile *.py,*.pyw,*.c,*.h,*.pm,*.sh set fileformat=unix
 au BufRead,BufNewFile *.md set filetype=markdown
