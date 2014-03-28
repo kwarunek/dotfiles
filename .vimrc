@@ -137,7 +137,10 @@ au BufNewFile *.py,*.pyw,*.c,*.h,*.pm,*.sh set fileformat=unix
 au BufRead,BufNewFile *.md set filetype=markdown
 
 autocmd FileType python set omnifunc=pythoncomplete
+
 "autocmd BufWritePost *.py call Flake8()
+autocmd FileType python noremap <buffer> <F7> :call Flake8()<CR>
+autocmd FileType javascript noremap <buffer> <F7> :JSHint<CR> 
 
 syntax on
 filetype indent on

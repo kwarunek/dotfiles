@@ -16,5 +16,6 @@ git clone https://github.com/jelera/vim-gummybears-colorscheme.git vimgummybears
 cp -r vimgummybears/colors/* ~/.vim/colors
 git clone https://github.com/tpope/vim-vividchalk.git vividchalk
 cp -r vividchalk/colors/* ~/.vim/colors
-sudo npm install -g js-yaml
-sudo npm install -g jsonlint
+# sudo npm install -g js-yaml
+# sudo npm install -g jsonlint
+sudo npm install -g jshint
