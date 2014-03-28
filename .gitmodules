@@ -1,6 +1,6 @@
 [submodule ".vim/bundle/vim-airline"]
 	path = .vim/bundle/vim-airline
-	url = git@github.com:bling/vim-airline.git
+	url = https://github.com/bling/vim-airline.git
 [submodule ".vim/bundle/vim-pyflake8"]
 	path = .vim/bundle/vim-pyflake8
 	url = https://github.com/nvie/vim-flake8.git
