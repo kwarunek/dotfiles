@@ -142,6 +142,8 @@ autocmd FileType python set omnifunc=pythoncomplete
 autocmd FileType python noremap <buffer> <F7> :call Flake8()<CR>
 autocmd FileType javascript noremap <buffer> <F7> :JSHint<CR> 
 
+set tags=tags;/
+
 syntax on
 filetype indent on
 filetype on
