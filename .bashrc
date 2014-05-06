@@ -57,3 +57,4 @@ extract () {
 
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh
 [[ -s ~/.rvm/scripts/rvm ]] && . ~/.rvm/scripts/rvm
+[[ -s ~/.bash_profile ]] && . ~/.bash_profile
