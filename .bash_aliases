@@ -18,12 +18,15 @@ alias l='ls -CF'
 alias apt-get='sudo apt-get'
 alias ..='cd ..'
 alias sha1='openssl sha1'
-alias now='date +"%T'
+alias now='date +"%T"'
 alias ports='netstat -tulanp'
 alias reboot='sudo /sbin/reboot'
 alias poweroff='sudo /sbin/poweroff'
 alias halt='sudo /sbin/halt'
 alias shutdown='sudo /sbin/shutdown'
+
+# lil. nasty thing
+alias vi=vim
 
 alias ip-lan="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
