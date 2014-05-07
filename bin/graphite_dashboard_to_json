@@ -1,0 +1,17 @@
+#!/bin/bash
+
+URL=$1
+
+rm -f ./dashboard.json
+
+PREFIX=${URL%/*}
+SUFFIX=${URL#*dashboard/}
+
+echo 'URL Prefix: ' $PREFIX
+echo 'URL Suffix: ' $SUFFIX
+
+GRAPHITE_URL=$PREFIX/load/$SUFFIX
+
+echo $GRAPHITE_URL
+
+curl $GRAPHITE_URL > dashboard.json
