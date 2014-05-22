@@ -30,7 +30,7 @@ py () {
     fi
 }
 
-function parse_yaml {
+parseyaml () {
    local prefix=$2
    local s='[[:space:]]*' w='[a-zA-Z0-9_]*' fs=$(echo @|tr @ '\034')
    sed -ne "s|^\($s\):|\1|" \
