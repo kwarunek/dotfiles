@@ -45,6 +45,9 @@ set gdefault
 " easier attainable leader
 let mapleader = ","
 
+nnoremap <F3> :set invpaste paste?<CR>
+set pastetoggle=<F3>
+
 " search - "very magic" - all special ch except [a-z0-9_]/i
 nnoremap / /\v
 vnoremap / /\v
