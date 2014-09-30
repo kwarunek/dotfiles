@@ -9,12 +9,6 @@ git submodule update
 
 
 case $1 in
-    "vim")    
-        rm -rf ~/.vim
-        rm -rf ~/.vimrc
-        ln -s ~/dotfiles/.vim ~/.vim
-        ln -s ~/dotfiles/.vimrc ~/.vimrc
-        ;;
     "bash")
         rm -rf ~/.bashrc
         rm -rf ~/.bash_functions
@@ -28,4 +22,11 @@ case $1 in
         rm -rf ~/.gitconfig
         ln -s ~/dotfiles/.gitconfig ~/.gitconfig
         ;;
+    *)  # always install vim's config
+        rm -rf ~/.vim
+        rm -rf ~/.vimrc
+        ln -s ~/dotfiles/.vim ~/.vim
+        ln -s ~/dotfiles/.vimrc ~/.vimrc
+        ;;
 esac
+
