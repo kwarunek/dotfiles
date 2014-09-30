@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env sh
 
 cd ~
 git clone https://github.com/kAlmAcetA/dotfiles.git &>/dev/null
