@@ -1,0 +1,41 @@
+#!/bin/bash
+
+SVNDIR=`svn info | egrep "^URL: .*/trunk$" | awk '{print $2}'`
+if [ "$SVNDIR" == "" ];  then
+    echo "Run from trunk's checkout directory"
+    exit 1
+fi
+
+DIR=${SVNDIR/trunk/}
+
+# create new tag name
+TAGS=`svn ls -v  $DIR"tags" | grep "rel_" | awk '{sub(/.*rel/, "rel"); split($0,a,"_"); split(a[2],b,"."); print b[1]" "b[2]" "b[3]+1" "a[1]"_"b[1]"."b[2]"."b[3]+1"_ "$0}'| sort -k1n -k2n -k3n | tail -1 | awk '{print $4" "$5}'`
+TAG=`echo $TAGS | awk '{print $1}'`
+TAG_OLD=`echo $TAGS | awk '{print $2}'`
+
+CHANGES=`svn diff ${DIR}tags/$TAG_OLD ${DIR}trunk/ | egrep "\+\+\+"`
+
+# check tag first
+if [ "$TAG" == "" ];  then
+    TAG="rel_1.0.0_"
+fi
+
+if [ -z "$1" ]; then
+   MSG="update"
+else 
+   MSG=$1
+fi
+
+# copy to new tag
+PROC="svn copy ${DIR}trunk ${DIR}tags/$TAG`date +%Y%m%d` -m \"$MSG\""
+
+#echo $PROC
+#exit
+echo "===== CHANGES ====="
+echo $CHANGES
+echo ""
+echo "===== NEW ====="
+echo "Making new release ($MSG):"
+echo "${DIR}tags/$TAG`date +%Y%m%d`"
+
+$PROC
