@@ -2,6 +2,10 @@
 	email = xxxx@xxx
 	username = kAlmAcetA
 	name = kAlmAcetA
+[diff]
+	tool = vimdiff
+[push]
+	default = current
 [alias]
 	ci = commit
 	co = checkout
