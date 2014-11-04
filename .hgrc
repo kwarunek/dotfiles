@@ -1,0 +1,22 @@
+[ui]
+username = kAlmAcetA <kalmaceta@>
+editor = vim
+
+[extensions]
+hgext.extdiff =
+transplant=
+shelve=
+hgext.bookmarks =
+hggit = 
+
+[defaults]
+# suppress noisy extdiff header message
+meld = -q
+
+[git]
+branch_bookmark_suffix=_migrated
+
+[extdiff]
+cmd.vimdiff = vimdiff
+cmd.meld = meld
+opts.meld = --diff
