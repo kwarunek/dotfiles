@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+py=`which python`
+read -p "Using $py." -n 1 -r
+echo
+wget https://bootstrap.pypa.io/ez_setup.py -O - | python
+easy_install pip
