@@ -6,8 +6,8 @@ editor = vim
 hgext.extdiff =
 transplant=
 shelve=
-hgext.bookmarks =
-hggit = 
+# hgext.bookmarks =
+# hggit = 
 
 [defaults]
 # suppress noisy extdiff header message
