@@ -10,6 +10,8 @@ Pathongen with installed:
  - [vim-pyflake8](https://github.com/nvie/vim-flake8.git),
  - [js-hint](https://github.com/Shutnik/jshint2.vim.git),
  - [NERDcommenter](https://github.com/scrooloose/nerdcommenter.git)
+ - [salt-vim](https://github.com/saltstack/salt-vim)
+ - [vim-puppet](https://github.com/rodjek/vim-puppet)
 
 **Additional key bindings**:
 
