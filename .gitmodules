@@ -37,3 +37,6 @@
 [submodule ".vim/bundle/c-cpp-syntax"]
 	path = .vim/bundle/c-cpp-syntax
 	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
+[submodule ".vim/bundle/vim-fugitive"]
+	path = .vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
