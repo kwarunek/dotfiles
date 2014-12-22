@@ -5,13 +5,20 @@ vim
 ------
 Pathongen with installed:
 
- - [vim-airline](https://github.com/bling/vim-airline.git), 
  - [NERDTree](https://github.com/scrooloose/nerdtree.git),
+ - [vim-airline](https://github.com/bling/vim-airline.git), 
+ - [vim-eunuch](https://github.com/tpope/vim-eunuch.git),
+ - [NERDcommenter](https://github.com/scrooloose/nerdcommenter.git),
+ - [tabular](https://github.com/godlygeek/tabular.git),
+
  - [vim-pyflake8](https://github.com/nvie/vim-flake8.git),
  - [js-hint](https://github.com/Shutnik/jshint2.vim.git),
- - [NERDcommenter](https://github.com/scrooloose/nerdcommenter.git)
+
+ - [vim-javascript-syntax](https://github.com/jelera/vim-javascript-syntax.git),
  - [salt-vim](https://github.com/saltstack/salt-vim)
  - [vim-puppet](https://github.com/rodjek/vim-puppet)
+ - [rust.vim](https://github.com/wting/rust.vim.git),
+ - [vim-go](https://github.com/fatih/vim-go.git)
 
 **Additional key bindings**:
 
