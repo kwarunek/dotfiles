@@ -21,12 +21,38 @@ extract () {
   fi
 }
 
+# python's virtual env switch
 py () {
     pyenvscript=~/pyenv/$1/bin/activate
     if [ -f $pyenvscript ] ; then
+        deactivate &>/dev/null
         source $pyenvscript
     else
-        echo "$pyenvscript does not exists"
+        echo "$pyenvscript does not exist"
+    fi
+}
+
+# profile switch
+# profile without parameter returns current profile or nothing
+# profile with string parameter set (copy) env's files
+profile () {
+    ENV_FILE=~/.env_profile_current
+    if [ "$1 " == " " ]; then
+        if [ -f $ENV_FILE ]; then
+            cat $ENV_FILE | sed "s/\(.*\)/[\1]/";
+        fi
+    else
+        profile=~/.env_profiles/$1
+        if [ -d $profile ]; then
+            for f in $(ls -A1 $profile); do
+                cp --remove-destination $profile/$f ~/$f;
+                echo "Copied: $profile/$f ~/$f"
+            done
+            touch $ENV_FILE
+            echo "$1" > $ENV_FILE
+        else
+            echo "Profile does not exist"
+        fi
     fi
 }
 

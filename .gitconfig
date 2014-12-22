@@ -1,5 +1,5 @@
 [user]
-	email = xxxx@xxx
+	email = kalmaceta@gmail.com
 	username = kAlmAcetA
 	name = kAlmAcetA
 [diff]
@@ -15,9 +15,11 @@
 	changes=diff --name-status -r
 	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
 	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+    sync = !git pull --rebase && git push
 	whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
 	st = status
 	br = branch
+    wtf = log --pretty=format:"%C(auto,yellow)%h%C(auto)%d%C(auto,reset)\\ by\\ %C(auto,blue)%cn%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)%n\\ %s%n" --stat
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [color]
 	ui = auto
