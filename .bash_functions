@@ -45,7 +45,7 @@ profile () {
         profile=~/.env_profiles/$1
         if [ -d $profile ]; then
             for f in $(ls -A1 $profile); do
-                cp --remove-destination $profile/$f ~/$f;
+                cp -rTf --remove-destination $profile/$f ~/$f;
                 echo "Copied: $profile/$f ~/$f"
             done
             touch $ENV_FILE
