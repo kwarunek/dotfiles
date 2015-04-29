@@ -7,7 +7,7 @@ git pull
 git submodule init
 git submodule update
 
-cfgs=(bash vc vim)
+cfgs=(bash vc vim flake8)
 
 init_bash_cfg (){
     echo "Init bash config"
@@ -34,6 +34,13 @@ init_vim_cfg () {
     rm -rf ~/.vimrc
     ln -s ~/dotfiles/.vim ~/.vim
     ln -s ~/dotfiles/.vimrc ~/.vimrc
+}
+
+init_flake8_cfg () {
+    echo "Flake8"
+    pip install flake8
+    mkdir -p ~/.config
+    ln -s ~/dotfiles/.config/flake8 ~/.config/flake8
 }
 
 for item in ${cfgs[*]}
