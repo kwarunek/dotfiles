@@ -32,30 +32,6 @@ py () {
     fi
 }
 
-# profile switch
-# profile without parameter returns current profile or nothing
-# profile with string parameter set (copy) env's files
-profile () {
-    ENV_FILE=~/.env_profile_current
-    if [ "$1 " == " " ]; then
-        if [ -f $ENV_FILE ]; then
-            cat $ENV_FILE | sed "s/\(.*\)/[\1]/";
-        fi
-    else
-        profile=~/.env_profiles/$1
-        if [ -d $profile ]; then
-            for f in $(ls -A1 $profile); do
-                cp -rTf --remove-destination $profile/$f ~/$f;
-                echo "Copied: $profile/$f ~/$f"
-            done
-            touch $ENV_FILE
-            echo "$1" > $ENV_FILE
-        else
-            echo "Profile does not exist"
-        fi
-    fi
-}
-
 parseyaml () {
    local prefix=$2
    local s='[[:space:]]*' w='[a-zA-Z0-9_]*' fs=$(echo @|tr @ '\034')
