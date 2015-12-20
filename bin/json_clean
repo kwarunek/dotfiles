@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+import json
+import sys
+
+
+data = json.load(open(sys.argv[1]))
+json.dump(obj=data, fp=open('clean_{}'.format(sys.argv[1]), 'w'), sort_keys=True, indent=4)
+
