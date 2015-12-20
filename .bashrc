@@ -27,7 +27,7 @@ CU='32'
 [[ "$SUDO_USER " == " " ]] || CU='36'
 [[ "$USER " == "root " ]] && CU='31'
 
-PS1='$(profile)${debian_chroot:+($debian_chroot)}\[\033[01;${CU}m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;${CU}m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
