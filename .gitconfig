@@ -1,7 +1,7 @@
 [user]
-	email = kalmaceta@gmail.com
-	username = kAlmAcetA
-	name = kAlmAcetA
+	email = krzysztof@warunek.net
+	username = kwarunek
+	name = Krzysztof Warunek
 [diff]
 	tool = vimdiff
 [push]
@@ -15,7 +15,6 @@
 	changes=diff --name-status -r
 	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
 	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
-    sync = !git pull --rebase && git push
 	whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
 	st = status
 	br = branch
