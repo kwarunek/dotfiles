@@ -11,12 +11,12 @@ cfgs=(bash vc vim flake8 go rvm nvm)
 
 init_bash_cfg (){
     echo "Init bash config"
-    rm ~/.bashrc ~/.bash_functions ~/.bash_aliases ~/.bash_profile ~/.bash_login
+    rm ~/.screenrc ~/.bashrc ~/.bash_functions ~/.bash_aliases ~/.bash_profile ~/.bash_login
     ln -s ~/dotfiles/.bashrc ~/.bashrc
     ln -s ~/dotfiles/.profile ~/.profile
+    ln -s ~/dotfiles/.screenrc ~/.screenrc
     ln -s ~/dotfiles/.bash_aliases ~/.bash_aliases
     ln -s ~/dotfiles/.bash_functions ~/.bash_functions
-    source ~/.bashrc
 }
 
 init_vc_cfg () {
