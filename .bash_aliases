@@ -31,6 +31,7 @@ alias vi=vim
 alias ip-lan="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
 alias ip-wan="dig +short myip.opendns.com @resolver1.opendns.com"
 alias rm-DS="find . -type f -name '*.DS_Store' -ls -delete"
+alias rm-pyc="find . -type f -name '*.pyc' -ls -delete"
 alias rot13='tr a-zA-Z n-za-mN-ZA-M'
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	alias "$method"="lwp-request -m '$method'"

@@ -1,20 +1,19 @@
 #!/usr/bin/env bash
 
 cd ~
-git clone https://github.com/kAlmAcetA/dotfiles.git &>/dev/null
+git clone https://github.com/kwarunek/dotfiles.git &>/dev/null
 cd dotfiles
 git pull
 git submodule init
 git submodule update
 
-cfgs=(bash vc vim flake8)
+cfgs=(bash vc vim flake8 go rvm nvm)
 
 init_bash_cfg (){
     echo "Init bash config"
-    rm -rf ~/.bashrc
-    rm -rf ~/.bash_functions
-    rm -rf ~/.bash_aliases
+    rm ~/.bashrc ~/.bash_functions ~/.bash_aliases ~/.bash_profile ~/.bash_login
     ln -s ~/dotfiles/.bashrc ~/.bashrc
+    ln -s ~/dotfiles/.profile ~/.profile
     ln -s ~/dotfiles/.bash_aliases ~/.bash_aliases
     ln -s ~/dotfiles/.bash_functions ~/.bash_functions
     source ~/.bashrc
@@ -42,6 +41,24 @@ init_flake8_cfg () {
     mkdir -p ~/.config
     ln -s ~/dotfiles/.config/flake8 ~/.config/flake8
 }
+
+init_nvm_cfg () {
+    echo "nvm"
+    git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
+    echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bash_profile
+    echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"' >>  ~/.bash_profile
+}
+
+init_go_cfg () {
+    echo "go"
+    GO_VERSION=1.5.3
+    wget -O- wget https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz 2>/dev/null | tar xvz -C ~
+    echo 'export GOROOT=$HOME/go' >> ~/.bash_profile
+    echo 'export PATH=$PATH:$GOROOT/bin' >> ~/.bash_profile
+    mkdir -p ~/workspace/go
+    echo 'export GOPATH=$HOME/workspace/go' >> ~/.bash_profile
+}
+
 
 for item in ${cfgs[*]}
 do
