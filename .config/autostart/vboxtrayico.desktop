@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=vboxtrayico
-Comment=Virtualbox tray app
-Exec=vboxtrayico %U
-Icon=virtualbox.png
-Terminal=false
-Type=Application
-Encoding=UTF-8
