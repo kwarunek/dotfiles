@@ -1,6 +1,22 @@
 dotfiles
 ========
 
+bash
+-----
+Some aliases, functions
+
+ - colored grep, ls, diff if possible
+ - `extract FILENAME` detect type and try to extract
+ - `parseyaml` parses yaml test to bash array
+ - increased history size, shell shared 
+
+
+ - `ip-lan` and `ip-wan` detect local and wan ip
+ - `ports` show ports stats
+ - `rm-pyc`, `rm-DS` remove python pyc and mac DS files
+ - `sha1`, `rot13`, `now`
+ - `GET`, `POST`... with url make request
+
 vim
 ------
 Pathongen with installed:
@@ -16,7 +32,6 @@ Pathongen with installed:
  - [salt-vim](https://github.com/saltstack/salt-vim)
  - [vim-puppet](https://github.com/rodjek/vim-puppet)
  - [rust.vim](https://github.com/wting/rust.vim.git),
- - [vim-go](https://github.com/fatih/vim-go.git)
 
 **Additional key bindings**:
 
