@@ -53,7 +53,7 @@ init_go_cfg () {
     echo "go"
     GO_VERSION=1.5.3
     wget -O- wget https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz 2>/dev/null | tar xvz -C ~
-    echo 'export GOROOT=$HOME/go' >> ~/.bash_profile
+    echo 'export GOROOT=$HOME/go' >> ~/.profile_local
     echo 'export PATH=$PATH:$GOROOT/bin' >> ~/.profile_local
     mkdir -p ~/workspace/go
     echo 'export GOPATH=$HOME/workspace/go' >> ~/.profile_local
