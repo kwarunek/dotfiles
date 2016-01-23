@@ -185,6 +185,8 @@ set tags=tags;/
 
 au BufRead,BufNewFile *.md set filetype=markdown
 
+let g:jsx_ext_required = 0
+
 syntax on
 filetype indent on
 filetype on
