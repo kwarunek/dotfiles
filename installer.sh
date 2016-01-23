@@ -7,11 +7,11 @@ git pull
 git submodule init
 git submodule update
 
-cfgs=(bash vc vim flake8 go rvm nvm)
+cfgs=(bash vc vim flake8 go nvm)
 
 init_bash_cfg (){
     echo "Init bash config"
-    rm ~/.screenrc ~/.bashrc ~/.bash_functions ~/.bash_aliases ~/.bash_profile ~/.bash_login
+    rm ~/.screenrc ~/.bashrc ~/.bash_functions ~/.bash_aliases ~/.bash_profile ~/.bash_login ~/.profile
     ln -s ~/dotfiles/.bashrc ~/.bashrc
     ln -s ~/dotfiles/.profile ~/.profile
     ln -s ~/dotfiles/.screenrc ~/.screenrc
