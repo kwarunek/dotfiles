@@ -30,6 +30,11 @@ case "$TERM" in
     HOME_TERMINFO_DIR=$HOME/.terminfo
     [[ -f $HOME_TERMINFO_DIR/$POTENTIAL_TERMINFO ]] && \
         export TERM=$POTENTIAL_TERM
+
+    TERM_CAP_LIST==$(toe -a | awk '{print $1}')
+    [[ "$TERM_CAP_LIST" =~ "$POTENTIAL_TERM" ]] && \
+        export TERM=$POTENTIAL_TERM
+
     ;;
 esac
 
