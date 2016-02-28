@@ -35,8 +35,9 @@ Pathongen with installed:
 
 **Additional key bindings**:
 
- - **F2** - toggle NERDtree
- - **F3** - toggle nopaste
+ - **F2** - toggles NERDtree
+ - **F3** - toggles nopaste
+ - **F4** - (un)comments
  - **F7** - flake for py, jshint for js
  - **,**  - leader
  - **,nw** - clear trailing whitespaces

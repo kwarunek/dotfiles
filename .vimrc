@@ -47,6 +47,7 @@ set gdefault
 let mapleader = ","
 
 nnoremap <F3> :set invpaste paste?<CR>
+
 set pastetoggle=<F3>
 
 " search - "very magic" - all special ch except [a-z0-9_]/i
@@ -75,14 +76,13 @@ nnoremap <leader>cssort ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
 
-" nnoremap <leader>ct |NERDComToggleComment|
-" vnoremap <leader>ct |NERDComToggleComment|
 
 " CTRL+A - select all
 map <C-A> ggVG
 
 " NERDTree toggle
 map <F2> :NERDTreeToggle<CR>
+map <F4> <leader>c<space>
 
 " use arrow keys to move around buffers
 nnoremap <silent> <Left>   :bn<CR>
