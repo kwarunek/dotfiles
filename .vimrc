@@ -90,14 +90,14 @@ nnoremap <silent> <Right>  :bp<CR>
 
 
 " toggle background
-map <F1> :call ToggleBg()<CR>
-function! ToggleBg()
-    if &background == 'dark'
-	set bg=light
-    else
-        set bg=dark
-    endif
-endfunc
+" map <F1> :call ToggleBg()<CR>
+" function! ToggleBg()
+"    if &background == 'dark'
+"	    set bg=light
+"    else
+"        set bg=dark
+"    endif
+" endfunc
 " toggle background end
 
 
@@ -130,7 +130,7 @@ let g:NERDTreeWinPos = 'left'
 let g:NERDTreeWinSize = 50
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeShowHidden=0
-let g:NERDTreeIgnore=['\.pyc','\~$','\.swo$','\.swp$','\.git','\.hg','\.svn','\.bzr']
+let g:NERDTreeIgnore=['\.pyc','\~$','\.swo$','\.swp$','\.bzr']
 
 let python_highlight_all=1
 
@@ -175,6 +175,9 @@ au BufNewFile *.py,*.pyw,*.c,*.h,*.pm,*.sh set fileformat=unix
 
 
 autocmd FileType python set omnifunc=pythoncomplete
+
+" js 2
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 
 " linters flake and js
 " autocmd BufWritePost *.py call Flake8()

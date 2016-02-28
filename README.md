@@ -35,7 +35,6 @@ Pathongen with installed:
 
 **Additional key bindings**:
 
- - **F1** - toggle dark/light bg
  - **F2** - toggle NERDtree
  - **F3** - toggle nopaste
  - **F7** - flake for py, jshint for js
