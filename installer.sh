@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
+{
 
-cd ~
-git clone https://github.com/kwarunek/dotfiles.git &>/dev/null
-cd dotfiles
-git pull
-git submodule init
-git submodule update
+init_repo_cfg (){
+    cd ~
+    git clone https://github.com/kwarunek/dotfiles.git &>/dev/null
+    cd dotfiles
+    git pull
+    git submodule init
+    git submodule update
+}
 
-cfgs=(bash vc vim flake8 go nvm)
 
 init_bash_cfg (){
     echo "Init bash config"
@@ -59,21 +61,16 @@ init_go_cfg () {
     echo 'export GOPATH=$HOME/workspace/go' >> ~/.profile_local
 }
 
-
-for item in ${cfgs[*]}
-do
-    if [[ "$1 " != " " ]]; then
-        if [[ $item == $1 ]]
-        then
-            init_${item}_cfg
-            exit 0
-        fi
-    else
-        read -p "Install $item config?[y/n] " -n 1 -r
-        echo    # (optional) move to a new line
-        if [[ $REPLY =~ ^[Yy]$ ]]
-        then
-           init_${item}_cfg
-        fi
-    fi
-done
+if [[ "$1 " -eq " " ]];
+then
+    init_repo_cfg
+    init_bash_cfg
+    init_vc_cfg
+    init_vim_cfg
+    init_flake8_cfg
+    init_go_cfg
+    init_nvm_cfg
+else
+    init_${1}_cfg
+fi
+}
