@@ -4,6 +4,8 @@
 	name = Krzysztof Warunek
 [diff]
 	tool = vimdiff
+[merge]
+	tool = vimdiff
 [push]
 	default = current
 [alias]

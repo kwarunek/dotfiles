@@ -46,6 +46,7 @@ init_flake8_cfg () {
 
 init_nvm_cfg () {
     echo "nvm"
+    rm -rf ~/.nvm
     git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
     echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.profile_local
     echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"' >>  ~/.profile_local
@@ -53,7 +54,8 @@ init_nvm_cfg () {
 
 init_go_cfg () {
     echo "go"
-    GO_VERSION=1.5.3
+    GO_VERSION=1.7.3
+    rm -rf ~/go
     wget -O- wget https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz 2>/dev/null | tar xvz -C ~
     echo 'export GOROOT=$HOME/go' >> ~/.profile_local
     echo 'export PATH=$PATH:$GOROOT/bin' >> ~/.profile_local
