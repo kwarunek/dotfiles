@@ -1,6 +1,6 @@
 [ -z "$PS1" ] && return
 
-HISTCONTROL=ignoredups:ignorespace
+HISTCONTROL=ignoredups:erasedups:ignorespace
 
 shopt -s histappend
 shopt -s checkwinsize
@@ -9,6 +9,7 @@ shopt -s checkwinsize
 HISTSIZE=10000
 HISTFILESIZE=100000
 PROMPT_COMMAND='history -a'
+PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
@@ -41,11 +42,17 @@ esac
 [[ -s ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -s ~/.bash_functions ]] && . ~/.bash_functions
 
-CU='32'
-[[ "$SUDO_USER " == " " ]] || CU='36'
-[[ "$USER " == "root " ]] && CU='31'
+CU=95
+getent hosts user.local &>/dev/null && CU=32
 
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;${CU}m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+jobs_count () {
+	cnt=$(jobs -l | wc -l)
+	if [ $cnt -gt 0 ]; then
+		echo -ne "(\e[91m${cnt}\e[0m)"
+	fi
+}
+
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;${CU}m\]\u@\h\[\033[00m\]`jobs_count`:\[\033[01;36m\]\w\[\033[00m\]\$ '
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
