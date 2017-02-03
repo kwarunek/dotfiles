@@ -41,19 +41,12 @@ esac
 
 [[ -s ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -s ~/.bash_functions ]] && . ~/.bash_functions
+[[ -s ~/.bash_local ]] && . ~/.bash_local
 
-CU=95
-getent hosts user.local &>/dev/null && CU=32
 
-get_screens_jobs_count () {
-    s=$(screen -ls | grep '[^a-z\-][0-9]\+\.' | wc -l)
-	j=$(jobs -l | wc -l)
-	if [ $j -gt 0 ] || [ $s -gt 0 ]; then
-        echo -ne ":(\e[91m${j}\e[0m/\e[37m${s}\e[0m)"
-	fi
-}
+[[ -z ${UserTColor-} ]] && UserTColor=95
 
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;${CU}m\]\u@\h\[\033[00m\]`get_screens_jobs_count`:\[\033[01;36m\]\w\[\033[00m\]\$ '
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;${UserTColor}m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ '
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
