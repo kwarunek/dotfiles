@@ -9,7 +9,6 @@ shopt -s checkwinsize
 HISTSIZE=10000
 HISTFILESIZE=100000
 PROMPT_COMMAND='history -a'
-PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
