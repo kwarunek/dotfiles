@@ -8,11 +8,13 @@
 	tool = vimdiff
 [push]
 	default = current
+    followTags = true
+[status]
+    showUntrackedFiles = all
 [alias]
 	ci = commit
 	co = checkout
 	lc = log ORIG_HEAD.. --stat --no-merges
-	undo=reset --hard
 	llog = log --date=local
 	changes=diff --name-status -r
 	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
@@ -20,8 +22,10 @@
 	whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
 	st = status
 	br = branch
+    prune = fetch --prune
+    stash-all = stash save --include-untracked
     wtf = log --pretty=format:"%C(auto,yellow)%h%C(auto)%d%C(auto,reset)\\ by\\ %C(auto,blue)%cn%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)%n\\ %s%n" --stat
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [color]
 	ui = auto
 [color "diff"]
