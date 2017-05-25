@@ -15,6 +15,7 @@
 	ci = commit
 	co = checkout
 	lc = log ORIG_HEAD.. --stat --no-merges
+    local = log --oneline --no-merges <remote>/<branch>..HEAD
 	llog = log --date=local
 	changes=diff --name-status -r
 	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
