@@ -23,9 +23,8 @@ init_bash_cfg (){
 
 init_vc_cfg () {
     echo "Init VC config"
-    rm -rf ~/.gitconfig
+    rm -rf ~/.gitconfig ~/.hgrc
     ln -s ~/dotfiles/.gitconfig ~/.gitconfig
-    rm -rf ~/.hgrc
     ln -s ~/dotfiles/.hgrc ~/.hgrc
 }
 
@@ -39,11 +38,12 @@ init_vim_cfg () {
 
 init_flake8_cfg () {
     echo "Flake8"
-    pip install flake8
+    pip3 --user install flake8
     mkdir -p ~/.config
     ln -s ~/dotfiles/.config/flake8 ~/.config/flake8
 }
 
+# optional
 init_nvm_cfg () {
     echo "nvm"
     rm -rf ~/.nvm
@@ -52,6 +52,7 @@ init_nvm_cfg () {
     echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"' >>  ~/.profile_local
 }
 
+# optional
 init_go_cfg () {
     echo "go"
     GO_VERSION=1.7.3
@@ -67,11 +68,14 @@ if [[ "$1 " -eq " " ]];
 then
     init_repo_cfg
     init_bash_cfg
-    init_vc_cfg
     init_vim_cfg
     init_flake8_cfg
-    init_go_cfg
-    init_nvm_cfg
+
+    # install repo config only for kwarunek
+    if [[ "$USER" = "kwarunek" ]];
+    then
+        init_vc_cfg
+    fi
 else
     init_${1}_cfg
 fi
