@@ -6,9 +6,11 @@ shopt -s histappend
 shopt -s checkwinsize
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=10000000
-PROMPT_COMMAND='history -a'
+export HISTSIZE=9999999999
+export HISTFILESIZE=9999999999
+export HISTIGNORE="ls:ls -l:ll:history:vi:vim:top:ps:ps axf:cd"
+
+PROMPT_COMMAND='history -a;'
 
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)

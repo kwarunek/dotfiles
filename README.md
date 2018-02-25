@@ -46,8 +46,3 @@ Pathongen with installed:
  - **Ctrl+A**  - select all
  - **left arrow** - go to next buffer
  - **right arrow** - go to prev buffer
-
-
-  
-
-

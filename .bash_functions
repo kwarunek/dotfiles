@@ -21,17 +21,6 @@ extract () {
   fi
 }
 
-# python's virtual env switch
-py () {
-    pyenvscript=~/pyenv/$1/bin/activate
-    if [ -f $pyenvscript ] ; then
-        deactivate &>/dev/null
-        source $pyenvscript
-    else
-        echo "$pyenvscript does not exist"
-    fi
-}
-
 parseyaml () {
    local prefix=$2
    local s='[[:space:]]*' w='[a-zA-Z0-9_]*' fs=$(echo @|tr @ '\034')
