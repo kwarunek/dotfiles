@@ -51,8 +51,8 @@ nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 
 " search - "very magic" - all special ch except [a-z0-9_]/i
-nnoremap / /\v
-vnoremap / /\v
+"nnoremap / /\v
+"vnoremap / /\v
 " search end
 
 " search - clear last highlight  
@@ -172,17 +172,23 @@ au BufRead,BufNewFile *.json,*.js,*.yaml,*.php,*.css,*.less,*.scss,*.xml,*.pm,*.
 au BufRead,BufNewFile *.py,*.pyw set tags+=$HOME/.vim/tags/python.ctags
 au BufNewFile *.py,*.pyw,*.c,*.h,*.pm,*.sh set fileformat=unix
 
+if has("autocmd")
 
+    autocmd FileType python set omnifunc=pythoncomplete
 
-autocmd FileType python set omnifunc=pythoncomplete
+    " js 2
+    autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+    autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-" js 2
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+    " linters flake and js
+    " autocmd BufWritePost *.py call Flake8()
+    autocmd FileType python noremap <buffer> <F7> :call Flake8()<CR>
+    autocmd FileType javascript noremap <buffer> <F7> :JSHint<CR> 
 
-" linters flake and js
-" autocmd BufWritePost *.py call Flake8()
-autocmd FileType python noremap <buffer> <F7> :call Flake8()<CR>
-autocmd FileType javascript noremap <buffer> <F7> :JSHint<CR> 
+    autocmd BufNewFile,BufRead *.rss setfiletype xml
+
+endif
 
 set tags=tags;/
 
