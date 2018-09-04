@@ -24,6 +24,9 @@ alias reboot='sudo /sbin/reboot'
 alias poweroff='sudo /sbin/poweroff'
 alias halt='sudo /sbin/halt'
 alias shutdown='sudo /sbin/shutdown'
+alias jq='jq -r'
+
+alias cpt='xclip -selection c -i'
 
 # lil. nasty thing
 alias vi=vim
