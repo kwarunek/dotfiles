@@ -168,6 +168,9 @@ au BufRead,BufNewFile *.json,*.js,*.yaml,*.php,*.css,*.less,*.scss,*.xml,*.pm,*.
 " highlight
 
 
+" fugitive tweaks
+:command -nargs=+ Ggr execute 'Ggrep' <q-args> | cw
+
 " global options for py (incl ctags)
 au BufRead,BufNewFile *.py,*.pyw set tags+=$HOME/.vim/tags/python.ctags
 au BufNewFile *.py,*.pyw,*.c,*.h,*.pm,*.sh set fileformat=unix
