@@ -43,6 +43,7 @@ set ttyfast            " Improves redrawing for newer computers
 set backspace=indent,eol,start
 set gdefault
 
+
 " easier attainable leader
 let mapleader = ","
 
@@ -203,3 +204,7 @@ syntax on
 filetype indent on
 filetype on
 filetype plugin on
+
+" highlight coloumn limit 120ch
+highlight ColorColumn ctermbg=236
+set colorcolumn=120
