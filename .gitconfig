@@ -1,46 +1,47 @@
 [user]
-	email = krzysztof@warunek.net
-	username = kwarunek
-	name = Krzysztof Warunek
+    email = krzysztof@warunek.net
+    username = kwarunek
+    name = Krzysztof Warunek
 [diff]
-	tool = vimdiff
+    tool = vimdiff
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [push]
-	default = current
+    default = current
     followTags = true
 [status]
     showUntrackedFiles = all
 [alias]
-	ci = commit
-	co = checkout
-	c-p = cherry-pick
-	lc = log ORIG_HEAD.. --stat --no-merges
-	local = log --no-merges origin/$(git br --no-color | grep '*' | awk '{print $2}')..HEAD
-	llog = log --date=local
-	changes=diff --name-status -r
-	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
-	whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
-	st = status
-	br = branch
+    ci = commit
+    co = checkout
+    c-p = cherry-pick
+    lc = log ORIG_HEAD.. --stat --no-merges
+    local = log --no-merges origin/$(git br --no-color | grep '*' | awk '{print $2}')..HEAD
+    llog = log --date=local
+    changes=diff --name-status -r
+    new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+    whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+    whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+    st = status
+    br = branch
+    brd = "!f() { git push --delete origin $1; git branch -D $1;}; f"
     prune = fetch --prune
     stash-all = stash save --include-untracked
     wtf = log --pretty=format:"%C(auto,yellow)%h%C(auto)%d%C(auto,reset)\\ by\\ %C(auto,blue)%cn%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)%n\\ %s%n" --stat
-	glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [color]
-	ui = auto
+    ui = auto
 [color "diff"]
-	meta = blue bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
+    meta = blue bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
 [color "branch"]
-	current = yellow reverse
-	local = yellow bold
-	remote = green bold
-	plain = red bold
+    current = yellow reverse
+    local = yellow bold
+    remote = green bold
+    plain = red bold
 [color "status"]
-	added = yellow
+    added = yellow
     changed = green bold
     untracked = blue bold
