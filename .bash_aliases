@@ -25,6 +25,10 @@ alias poweroff='sudo /sbin/poweroff'
 alias halt='sudo /sbin/halt'
 alias shutdown='sudo /sbin/shutdown'
 alias jq='jq -r'
+alias docker="sudo /usr/bin/docker"
+alias docker-compose="sudo /usr/local/bin/docker-compose"
+alias git-reclone='source ~/bin/git-reclone'
+
 
 alias cpt='xclip -selection c -i'
 

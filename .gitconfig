@@ -6,6 +6,7 @@
     tool = vimdiff
 [merge]
     tool = vimdiff
+    conflictstyle = diff3
 [push]
     default = current
     followTags = true
