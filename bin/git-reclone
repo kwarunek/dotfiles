@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set -e
+
+REMOTE_NAME=origin
+CLONE_DEST=`basename $PWD`
+REMOTE_URL=`git remote get-url $REMOTE_NAME`
+
+IS_DIRTY=false
+
+reclone () {
+    cd ..
+    rm -rf $CLONE_DEST
+    git clone $REMOTE_URL $CLONE_DEST
+    cd $CLONE_DEST
+}
+
+if [ -n "$(git status --porcelain)" ]; then
+    echo 'Work tree is not clean'
+    IS_DIRTY=true
+fi
+
+if $IS_DIRTY; then
+    echo 'Repository contains uncommited/unmerged/untracked/unpushed data.' 
+    read -p "Are you sure? " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        reclone
+    fi
+else
+    reclone
+fi
+
+set +e
