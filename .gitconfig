@@ -26,10 +26,12 @@
     st = status
     br = branch
     brd = "!f() { git push --delete origin $1; git branch -D $1;}; f"
+    tagd = "!f() { git tag -d $1; git push origin :$1;}; f"
     prune = fetch --prune
     stash-all = stash save --include-untracked
     wtf = log --pretty=format:"%C(auto,yellow)%h%C(auto)%d%C(auto,reset)\\ by\\ %C(auto,blue)%cn%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)%n\\ %s%n" --stat
     glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    up-all = submodule update --recursive --remote
 [color]
     ui = auto
 [color "diff"]
