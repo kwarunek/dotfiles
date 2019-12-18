@@ -38,18 +38,9 @@ init_vim_cfg () {
 
 init_flake8_cfg () {
     echo "Flake8"
-    pip3 --user install flake8
+    pip3 install --user flake8
     mkdir -p ~/.config
     ln -s ~/dotfiles/.config/flake8 ~/.config/flake8
-}
-
-# optional
-init_nvm_cfg () {
-    echo "nvm"
-    rm -rf ~/.nvm
-    git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
-    echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.profile_local
-    echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"' >>  ~/.profile_local
 }
 
 # optional
@@ -62,6 +53,10 @@ init_go_cfg () {
     echo 'export PATH=$PATH:$GOROOT/bin' >> ~/.profile_local
     mkdir -p ~/workspace/go
     echo 'export GOPATH=$HOME/workspace/go' >> ~/.profile_local
+}
+
+init_asdf_cfg () {
+   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6
 }
 
 if [[ "$1 " -eq " " ]];
