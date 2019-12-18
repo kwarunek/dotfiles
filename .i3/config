@@ -61,11 +61,11 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $workspace1 "1: TERM"
+set $workspace1 "1: MAIN"
 set $workspace2 "2: WEB"
-set $workspace3 "3: R"
+set $workspace3 "3"
 set $workspace4 "4: IM"
-set $workspace5 "5: TT"
+set $workspace5 "5"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -145,7 +145,7 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
 exec firefox
-exec_always --no-startup-id feh --bg-scale ~/Images/wallpaper.jpg
+# exec_always --no-startup-id feh --bg-scale ~/Images/wallpaper.jpg
 exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
 exec --no-startup-id xinput --set-prop "AlpsPS/2 ALPS GlidePoint" "libinput Tapping Enabled" 1
