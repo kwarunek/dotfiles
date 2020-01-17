@@ -46,3 +46,6 @@
 [submodule ".vim/bundle/kotlin-vim"]
 	path = .vim/bundle/kotlin-vim
 	url = https://github.com/udalov/kotlin-vim
+[submodule ".vim/bundle/leafgarland/typescript-vim"]
+	path = .vim/bundle/leafgarland/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
