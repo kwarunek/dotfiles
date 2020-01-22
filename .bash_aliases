@@ -28,6 +28,7 @@ alias jq='jq -r'
 alias docker="sudo /usr/bin/docker"
 alias docker-compose="sudo /usr/local/bin/docker-compose"
 alias git-reclone='source ~/bin/git-reclone'
+alias ssh-new-key='ssh-keygen -t ed25519 -a 128'
 
 
 alias cpt='xclip -selection c -i'
