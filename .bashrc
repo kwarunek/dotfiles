@@ -55,3 +55,8 @@ fi
 
 [ -s "$HOME/.asdf/asdf.sh" ] && \. $HOME/.asdf/asdf.sh
 [ -s "$HOME/.asdf/completions/asdf.bash" ] && \. $HOME/.asdf/completions/asdf.bash
+
+if which kubectl &>/dev/null; then
+    source <(kubectl completion bash)
+    complete -F __start_kubectl k
+fi

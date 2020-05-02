@@ -15,6 +15,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias k='kubectl'
 alias apt-get='sudo apt-get'
 alias ..='cd ..'
 alias sha1='openssl sha1'
