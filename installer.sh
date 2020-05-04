@@ -56,7 +56,7 @@ init_go_cfg () {
 }
 
 init_asdf_cfg () {
-   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6
+   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.8
 }
 
 if [[ "$1 " -eq " " ]];

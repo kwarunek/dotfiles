@@ -17,24 +17,15 @@ Some aliases, functions
  - `sha1`, `rot13`, `now`
  - `GET`, `POST`... with url make request
 
-vim
-------
-Pathongen with installed:
 
- - [NERDTree](https://github.com/scrooloose/nerdtree.git),
- - [vim-airline](https://github.com/bling/vim-airline.git), 
- - [vim-eunuch](https://github.com/tpope/vim-eunuch.git),
- - [NERDcommenter](https://github.com/scrooloose/nerdcommenter.git),
- - [tabular](https://github.com/godlygeek/tabular.git),
- - [vim-pyflake8](https://github.com/nvie/vim-flake8.git),
- - [js-hint](https://github.com/Shutnik/jshint2.vim.git),
- - [vim-javascript-syntax](https://github.com/jelera/vim-javascript-syntax.git),
- - [salt-vim](https://github.com/saltstack/salt-vim)
- - [vim-puppet](https://github.com/rodjek/vim-puppet)
- - [rust.vim](https://github.com/wting/rust.vim.git),
+vim
+---
+
+Pathongen with installed - check out `.gitmodules`.
 
 **Additional key bindings**:
 
+ - **F1** - toggles cursorline and an indentline marking
  - **F2** - toggles NERDtree
  - **F3** - toggles nopaste
  - **F4** - (un)comments

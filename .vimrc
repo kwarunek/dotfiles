@@ -82,6 +82,7 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 map <C-A> ggVG
 
 " NERDTree toggle
+map <F1> :set invcursorcolumn<CR>:IndentLinesToggle<CR>
 map <F2> :NERDTreeToggle<CR>
 map <F4> <leader>c<space>
 
@@ -89,17 +90,6 @@ map <F4> <leader>c<space>
 nnoremap <silent> <Left>   :bn<CR>
 nnoremap <silent> <Right>  :bp<CR>
 
-
-" toggle background
-" map <F1> :call ToggleBg()<CR>
-" function! ToggleBg()
-"    if &background == 'dark'
-"	    set bg=light
-"    else
-"        set bg=dark
-"    endif
-" endfunc
-" toggle background end
 
 
 " Bclose - close current buffer, preserve layout
@@ -122,6 +112,8 @@ function! <SID>BufcloseCloseIt()
 endfunction
 " Bclose end
 
+" indentLine
+let g:indentLine_fileType = ['yml', 'yaml', 'sls', 'conf']
 
 " NERDTree options
 let g:NERDTreeChristmasTree = 1
@@ -183,7 +175,7 @@ if has("autocmd")
     " js 2
     autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab cursorcolumn
 
     " linters flake and js
     " autocmd BufWritePost *.py call Flake8()
