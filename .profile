@@ -1,5 +1,4 @@
-
-export PATH=$PATH:$HOME/.local/bin:$HOME/bin:$HOME/.krew/bin"
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin:$HOME/.krew/bin
 export NOSPLASH=1
 export NOWELCOME=1
 export PAGER=less
