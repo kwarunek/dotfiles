@@ -7,7 +7,7 @@ Some aliases, functions
 
  - colored grep, ls, diff if possible
  - `extract FILENAME` detect type and try to extract
- - `parseyaml` parses yaml test to bash array
+ - `yaml2json`/`json2yaml` 
  - increased history size, shell shared 
 
 
