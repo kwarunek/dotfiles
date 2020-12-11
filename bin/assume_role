@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [[ $# -ne 1 ]]; then
+    echo -e "Usage:\n\t$0 ROLE\n\n- ROLE - a role name or an ARN."
+    exit 1
+fi
+
+if [[ $1 =~ ^arn:aws:iam::[0-9]*:role\/[A-Za-z0-9\-]* ]]; then
+#if [[ $1 =~ .*iam.* ]]; then 
+     #'       arn:aws:iam::968305543956:role/DLSecurity-prod-access'
+    ROLE_ARN=$1
+    ROLE="${ROLE_ARN##*/}"
+else
+    ACCOUNT_ID=`aws sts get-caller-identity | jq --raw-output '.Account'`
+    ROLE_ARN="arn:aws:iam::$ACCOUNT_ID:role/$1"
+    ROLE=$1
+fi
+
+CONF=~/.aws/credentials
+JSON=`aws sts assume-role --role-arn ${ROLE_ARN} --role-session-name assumed-${ROLE}`;
+
+AWS_ACCESS_KEY_ID=$(echo ${JSON} | jq --raw-output ".Credentials[\"AccessKeyId\"]");
+AWS_SECRET_ACCESS_KEY=$(echo ${JSON} | jq --raw-output ".Credentials[\"SecretAccessKey\"]");
+AWS_SESSION_TOKEN=$(echo ${JSON} | jq --raw-output ".Credentials[\"SessionToken\"]");
+AWS_EXPIRATION=$(echo ${JSON} | jq --raw-output ".Credentials[\"Expiration\"]");
+
+crudini --set "$CONF" $ROLE aws_access_key_id "$AWS_ACCESS_KEY_ID"
+crudini --set "$CONF" $ROLE aws_secret_access_key "$AWS_SECRET_ACCESS_KEY"
+crudini --set "$CONF" $ROLE aws_session_token "$AWS_SESSION_TOKEN"
+crudini --set "$CONF" $ROLE aws_expiration "$AWS_EXPIRATION"
+
+echo "Profile '$ROLE' is ready."  

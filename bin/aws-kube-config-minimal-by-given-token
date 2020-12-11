@@ -1,0 +1,18 @@
+#!/bin/bash
+
+
+
+if [[ $# -ne 3 ]]; then
+    echo -e "Usage:\n\t$0 CLUSTER_ARN K8S_ENDPOINT TOKEN\nExample\n\t$0 arn:aws:eks:eu-central-1:123456789:cluster/my https://123ABCD4567.gr7.eu-central-1.eks.amazonaws.com ABC123632CD..."
+    exit 1
+fi
+
+ARN=$1
+ENDPOINT=$2
+TOKEN=$3
+
+echo '' > $KUBECONFIG
+kubectl config set-credentials $ARN --token=$TOKEN
+kubectl config set-cluster $ARN --insecure-skip-tls-verify=true --server=$ENDPOINT
+kubectl config set-context $ARN --user=$ARN --namespace=default --cluster=$ARN
+kubectl config use-context $ARN
