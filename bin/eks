@@ -13,6 +13,6 @@ else
     exit 1
 fi
 
-[[ -z ${AWS_EKS_ROLE-} ]] && ARGS="--role-arn arn:aws:iam::$ACCOUNT:role/$AWS_EKS_ROLE"
+[[ -z ${AWS_EKS_ROLE-} ]] || ARGS="--role-arn arn:aws:iam::$ACCOUNT:role/$AWS_EKS_ROLE"
 
 aws eks update-kubeconfig --name $CLUSTER $ARGS
