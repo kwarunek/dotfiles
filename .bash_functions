@@ -38,3 +38,12 @@ parseyaml () {
       }
    }'
 }
+
+set_kube_ps1() {
+    CONTEXT=$(cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //")
+    NAMESPACE=$(kubectl-ns -c)
+
+    if [ -n "$CONTEXT" ]; then
+        export PS1="$BASE_PS1 (${C_YELLOW}${CONTEXT}${C_RESTORE}:${C_IBLUE}$NAMESPACE${C_RESTORE})"
+    fi
+}

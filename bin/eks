@@ -1,0 +1,18 @@
+#!/bin/bash
+
+SUFFIX=$1
+SCRIPT_NAME=$(basename $0)
+CLUSTER=${AWS_EKS_CLUSTER}${SUFFIX}
+
+if [[ "$SCRIPT_NAME" =~ ^eks-([a-z]+)$ ]]; then
+    export AWS_PROFILE=${BASH_REMATCH[1]}
+    aws sts get-caller-identity &>/dev/null || aws-azure-login --no-prompt -p $AWS_PROFILE
+    ACCOUNT=`aws sts get-caller-identity | jq --raw-output '.Account'`
+else
+    echo "Usage "$SCRIPT_NAME"-<dev|int|stage|prod|...> OPTIONAL_CLUSTER_SUFFIX"
+    exit 1
+fi
+
+[[ -z ${AWS_EKS_ROLE-} ]] && ARGS="--role-arn arn:aws:iam::$ACCOUNT:role/$AWS_EKS_ROLE"
+
+aws eks update-kubeconfig --name $CLUSTER $ARGS

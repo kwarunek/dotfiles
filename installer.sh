@@ -18,6 +18,7 @@ init_bash_cfg (){
     ln -s ~/dotfiles/.profile ~/.profile
     ln -s ~/dotfiles/.screenrc ~/.screenrc
     ln -s ~/dotfiles/.bash_aliases ~/.bash_aliases
+    ln -s ~/dotfiles/.bash_colors ~/.bash_colors
     ln -s ~/dotfiles/.bash_functions ~/.bash_functions
 }
 
