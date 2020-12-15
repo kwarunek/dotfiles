@@ -8,8 +8,6 @@ if [[ $# -ne 1 ]]; then
 fi
 
 if [[ $1 =~ ^arn:aws:iam::[0-9]*:role\/[A-Za-z0-9\-]* ]]; then
-#if [[ $1 =~ .*iam.* ]]; then 
-     #'       arn:aws:iam::968305543956:role/DLSecurity-prod-access'
     ROLE_ARN=$1
     ROLE="${ROLE_ARN##*/}"
 else
