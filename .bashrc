@@ -46,10 +46,9 @@ esac
 [[ -s ~/.bash_local ]] && . ~/.bash_local
 
 
-[[ -z ${UserTColor-} ]] && UserTColor=$C_BIPURPLE
+[[ -z ${UserTColor-} ]] && UserTColor=95
 
-BASE_PS1='${debian_chroot:+($debian_chroot)}'${UserTColor}'\u@\h'${C_RESTORE}':'${C_BCYAN}'\w'${C_RESTORE}
-PS1=$BASE_PS1'\$ '
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;${UserTColor}m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ '
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
