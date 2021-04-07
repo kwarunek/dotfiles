@@ -65,3 +65,7 @@ fi
 if which terraform &>/dev/null; then
 complete -C terraform terraform
 fi
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+

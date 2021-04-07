@@ -52,3 +52,6 @@
 [submodule ".vim/bundle/indentLine"]
 	path = .vim/bundle/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
+[submodule ".vim/bundle/vim-rego"]
+	path = .vim/bundle/vim-rego
+	url = https://github.com/tsandall/vim-rego.git
