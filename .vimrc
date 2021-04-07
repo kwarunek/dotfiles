@@ -42,6 +42,8 @@ set showcmd
 set ttyfast            " Improves redrawing for newer computers
 set backspace=indent,eol,start
 set gdefault
+set ttimeout          " for key codes
+set ttimeoutlen=10    " unnoticeable small value
 
 
 " easier attainable leader
