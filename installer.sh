@@ -39,7 +39,7 @@ init_vim_cfg () {
 
 init_flake8_cfg () {
     echo "Flake8"
-    pip3 install --user flake8
+    pip3 install --user flake8 black
     mkdir -p ~/.config
     ln -s ~/dotfiles/.config/flake8 ~/.config/flake8
 }
@@ -57,7 +57,7 @@ init_go_cfg () {
 }
 
 init_asdf_cfg () {
-   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.8
+   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
 }
 
 if [[ "$1 " -eq " " ]];
@@ -66,6 +66,7 @@ then
     init_bash_cfg
     init_vim_cfg
     init_flake8_cfg
+    init_asdf_cfg
 
     # install repo config only for kwarunek
     if [[ "$USER" = "kwarunek" ]];

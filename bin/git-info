@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+REMOTES=`git remote show`
+CURRENT_BRANCH=`git branch --show-current`
+SUBMODULES=`git submodule status --recursive | wc -l`
+echo 'working_tree'
+echo "  current_branch: $CURRENT_BRANCH"
+if [ -n "$(git status --porcelain)" ]; then
+    echo '  clean: false'
+fi
+
+echo 'remotes:'
+for r in $REMOTES; do
+    echo -e "  $r: $(git remote get-url $r)"
+done
+
+echo "submodules: $SUBMODULES"
