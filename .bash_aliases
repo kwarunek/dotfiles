@@ -36,8 +36,8 @@ alias yaml2json="python3 -c 'import sys, yaml, json; json.dump(yaml.safe_load(sy
 alias json2yaml="python3 -c 'import sys, yaml, json; yaml.dump(json.load(sys.stdin if len(sys.argv) != 2 else open(sys.argv[1])), sys.stdout, indent=2)'"
 
 # clipboard
-alias c='xclip -selection c -i'
-alias v='xclip -selection c -o'
+alias cc='xclip -selection c -i'
+alias cv='xclip -selection c -o'
 
 # lil. nasty thing
 alias vi=vim
@@ -47,6 +47,3 @@ alias ip-wan="dig +short myip.opendns.com @resolver1.opendns.com"
 alias rm-DS="find . -type f -name '*.DS_Store' -ls -delete"
 alias rm-pyc="find . -type f -name '*.pyc' -ls -delete"
 alias rot13='tr a-zA-Z n-za-mN-ZA-M'
-for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-	alias "$method"="lwp-request -m '$method'"
-done

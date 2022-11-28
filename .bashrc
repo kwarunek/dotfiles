@@ -57,15 +57,15 @@ fi
 [ -s "$HOME/.asdf/asdf.sh" ] && \. $HOME/.asdf/asdf.sh
 [ -s "$HOME/.asdf/completions/asdf.bash" ] && \. $HOME/.asdf/completions/asdf.bash
 
+
+# Kubernetes
 if which kubectl &>/dev/null; then
+    [[ -s ~/.kubectl_aliases ]] && . ~/.kubectl_aliases
     source <(kubectl completion bash)
     complete -F __start_kubectl k
 fi
 
+# Terraform
 if which terraform &>/dev/null; then
-complete -C terraform terraform
+    complete -C terraform terraform
 fi
-
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-
