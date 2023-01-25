@@ -1,1 +1,1 @@
-\set HISTFILE ~/psql_history/.psql_history- :DBNAME
+\set HISTFILE ~/.psql_history.d/.psql_history- :DBNAME

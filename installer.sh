@@ -34,7 +34,7 @@ init_base_cfg (){
     setup_link .screenrc
 
     # psql
-    mkdir -p ~/psql_history
+    mkdir -p ~/.psql_history.d
     setup_link .psqlrc
 }
 
