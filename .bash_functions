@@ -39,11 +39,10 @@ parseyaml () {
    }'
 }
 
-set_kube_ps1() {
-    CONTEXT=$(cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //")
-    NAMESPACE=$(kubectl-ns -c)
+batdiff() {
+    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+}
 
-    if [ -n "$CONTEXT" ]; then
-        export PS1="$BASE_PS1 (${C_YELLOW}${CONTEXT}${C_RESTORE}:${C_IBLUE}$NAMESPACE${C_RESTORE})"
-    fi
+batman() {
+    MANPAGER="sh -c 'col -bx | bat -l man -p'"  man $@
 }
