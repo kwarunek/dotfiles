@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 {
 
+setup_link() {
+    fname=$1
+    rm -f ~/$fname
+    ln -s ~/dotfiles/$fname ~/$fname
+}
+
 init_repo_cfg (){
     cd ~
     git clone https://github.com/kwarunek/dotfiles.git &>/dev/null
@@ -11,67 +17,60 @@ init_repo_cfg (){
 }
 
 
-init_bash_cfg (){
-    echo "Init bash config"
-    rm ~/.screenrc ~/.bashrc ~/.bash_functions ~/.bash_aliases ~/.bash_profile ~/.bash_login ~/.profile
-    ln -s ~/dotfiles/.bashrc ~/.bashrc
-    ln -s ~/dotfiles/.profile ~/.profile
-    ln -s ~/dotfiles/.screenrc ~/.screenrc
-    ln -s ~/dotfiles/.bash_aliases ~/.bash_aliases
-    ln -s ~/dotfiles/.kubectl_aliases ~/.kubectl_aliases
-    ln -s ~/dotfiles/.bash_colors ~/.bash_colors
-    ln -s ~/dotfiles/.bash_functions ~/.bash_functions
+init_base_cfg (){
+    echo "Init base config"
+    
+    # bash
+    setup_link .bashrc
+    setup_link .bash_aliases
+    setup_link .bash_colors
+    setup_link .bash_functions
+
+    # k8s
+    setup_link .kubectl_aliases
+
+    # common
+    setup_link .profile
+    setup_link .screenrc
+
+    # psql
+    mkdir -p ~/psql_history
+    setup_link .psqlrc
 }
 
 init_vc_cfg () {
     echo "Init VC config"
-    rm -rf ~/.gitconfig ~/.hgrc
-    ln -s ~/dotfiles/.gitconfig ~/.gitconfig
-    ln -s ~/dotfiles/.hgrc ~/.hgrc
+    setup_link .gitconfig
+    setup_link .hgrc
 }
 
 init_vim_cfg () {
     echo "Init vim config"
-    rm -rf ~/.vim
-    rm -rf ~/.vimrc
-    ln -s ~/dotfiles/.vim ~/.vim
-    ln -s ~/dotfiles/.vimrc ~/.vimrc
-}
-
-init_flake8_cfg () {
-    echo "Flake8"
-    pip3 install --user flake8 black
-    mkdir -p ~/.config
-    ln -s ~/dotfiles/.config/flake8 ~/.config/flake8
-}
-
-# optional
-init_go_cfg () {
-    echo "go"
-    GO_VERSION=1.7.3
-    rm -rf ~/go
-    wget -O- wget https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz 2>/dev/null | tar xvz -C ~
-    echo 'export GOROOT=$HOME/go' >> ~/.profile_local
-    echo 'export PATH=$PATH:$GOROOT/bin' >> ~/.profile_local
-    mkdir -p ~/workspace/go
-    echo 'export GOPATH=$HOME/workspace/go' >> ~/.profile_local
+    setup_link .vim
+    setup_link .vimrc
 }
 
 init_asdf_cfg () {
-   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
+    ASDF_DIR=~/".asdf"
+    ASDF_VERSION='v0.11.1'
+    if [ -d "$ASDF_DIR" ]; then
+        git -C $ASDF_DIR pull origin master
+        git -C $ASDF_DIR checkout $ASDF_VERSION
+    else
+        git clone https://github.com/asdf-vm/asdf.git $ASDF_DIR --branch $ASDF_VERSION
+    fi
+
 }
 
 if [[ "$1 " -eq " " ]];
 then
     init_repo_cfg
-    init_bash_cfg
+    init_base_cfg
     init_vim_cfg
-    init_flake8_cfg
     init_asdf_cfg
 
     # install repo config only for kwarunek
-    if [[ "$USER" = "kwarunek" ]];
-    then
+    if [[ "$USER" = "kwarunek" ]]; then
         init_vc_cfg
     fi
 else
