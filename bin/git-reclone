@@ -9,10 +9,8 @@ REMOTE_URL=`git remote get-url $REMOTE_NAME`
 IS_DIRTY=false
 
 reclone () {
-    cd ..
-    rm -rf $CLONE_DEST
-    git clone $REMOTE_URL $CLONE_DEST
-    cd $CLONE_DEST
+    find . -maxdepth 1 -not -path '.' -not -path '..' -exec rm -fr  {} +
+    git clone $REMOTE_URL .
 }
 
 if [ -n "$(git status --porcelain)" ]; then
