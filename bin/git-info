@@ -3,7 +3,7 @@
 REMOTES=`git remote show`
 CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
 SUBMODULES=`git submodule status --recursive | wc -l`
-echo 'working_tree'
+echo 'working_tree:'
 echo "  current_branch: $CURRENT_BRANCH"
 if [ -n "$(git status --porcelain)" ]; then
     echo '  clean: false'
