@@ -13,6 +13,12 @@ reclone () {
     git clone $REMOTE_URL .
 }
 
+if [ "$(git rev-parse --show-toplevel)" != "$(pwd)" ]; then
+  echo "You are not in the top-level directory of the repostiory"
+  exit 1
+fi
+
+
 if [ -n "$(git status --porcelain)" ]; then
     echo 'Work tree is not clean'
     IS_DIRTY=true
