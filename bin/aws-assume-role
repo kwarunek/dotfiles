@@ -10,11 +10,36 @@ fi
 ROLE=$1
 shift
 
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -a)
+            if [ -z "$2" ]; then
+                echo "Specify profile name"
+                exit 1
+            fi
+            ACCOUNT="$2"
+            acv=AWS_ACCOUNTS_$ACCOUNT
+            if [ "${!acv}" ]; then
+                ACCOUNT_ID=${!acv}
+            else
+                ACCOUNT_ID=$ACCOUNT
+            fi
+            shift 2
+            ;;
+        *)
+            ROLE="$1"
+            shift
+            ;;
+    esac
+done
+
 if [[ $ROLE =~ ^arn:aws:iam::[0-9]*:role\/[A-Za-z0-9\-]* ]]; then
     ROLE_ARN=$ROLE
     ROLE="${ROLE_ARN##*/}"
 else
-    ACCOUNT_ID=`aws sts get-caller-identity | jq --raw-output '.Account'`
+    if [ -z "$ACCOUNT_ID" ]; then
+        ACCOUNT_ID=`aws sts get-caller-identity | jq --raw-output '.Account'`
+    fi
     ROLE_ARN="arn:aws:iam::$ACCOUNT_ID:role/$ROLE"
 fi
 
