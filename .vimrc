@@ -49,34 +49,6 @@ set ttimeoutlen=10    " unnoticeable small value
 " easier attainable leader
 let mapleader = ","
 
-if &term =~ 'kitty'
-let [&t_TI, &t_TE] = ['', '']
-	" <PageUp>
-	let &t_kP = "\<ESC>[5;*~"
-	" <PageDown>
-	let &t_kN = "\<ESC>[6;*~"
-	" <Del>
-	let &t_kD = "\<ESC>[3;*~"
-	" <Insert>
-	let &t_kI = "\<ESC>[2;*~"
-	" <F5>
-	let &t_k5 = "\<ESC>[15;*~"
-	" <F6>
-	let &t_k6 = "\<ESC>[17;*~"
-	" <F7>
-	let &t_k7 = "\<ESC>[18;*~"
-	" <F8>
-	let &t_k8 = "\<ESC>[19;*~"
-	" <F9>
-	let &t_k9 = "\<ESC>[20;*~"
-	" <F10>
-	let &t_k; = "\<ESC>[21;*~"
-	" <F11>
-	let &t_F1 = "\<ESC>[23;*~"
-	" <F12>
-	let &t_F2 = "\<ESC>[24;*~"
-endif
-
 nnoremap <F3> :set invpaste paste?<CR>
 
 set pastetoggle=<F3>
