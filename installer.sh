@@ -22,6 +22,7 @@ init_base_cfg (){
     
     # bash
     setup_link .bashrc
+    setup_link .bash_profile
     setup_link .bash_aliases
     setup_link .bash_colors
     setup_link .bash_functions
