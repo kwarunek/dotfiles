@@ -132,3 +132,4 @@ alias kdnl='kubectl describe nodes -l'
 alias ksysdnl='kubectl --namespace=kube-system describe nodes -l'
 alias kge='kubectl get events --sort-by=".metadata.creationTimestamp" -o custom-columns="LASTSEEN:.lastTimestamp,HAPPENED:.firstTimestamp,TYPE:.type,REASON:.reason,MESSAGE:.message"'
 alias ksysge='kubectl get events -n kube-system --sort-by=".metadata.creationTimestamp" -o custom-columns="LASTSEEN:.lastTimestamp,HAPPENED:.firstTimestamp,TYPE:.type,REASON:.reason,MESSAGE:.message"'
+alias kdrain="kubectl drain --ignore-daemonsets --delete-emptydir-data"
