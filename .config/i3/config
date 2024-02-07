@@ -138,17 +138,15 @@ bar {
         status_command i3status
 }
 
-bindsym $mod+shift+x exec i3lock -d
-bindsym $mod+shift+z exec zz
-bindsym $mod+z exec --no-startup-id zz
 
-#bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
-#bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
-#bindsym XF86AudioMute exec amixer -q set Master toggle
+
+
+bindsym $mod+shift+x exec i3lock -d
+bindsym $mod+shift+z exec --no-startup-id zz
+bindsym $mod+z exec --no-startup-id zz
 
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
