@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-{
 
 setup_link() {
     fname=$1
@@ -14,6 +13,11 @@ init_repo_cfg (){
     git pull
     git submodule init
     git submodule update
+}
+
+init_nvim_cfg (){
+    echo "Init nvim"
+    setup_link ".config/nvim"
 }
 
 
@@ -63,13 +67,11 @@ init_asdf_cfg () {
 
 }
 
-if [[ "$1 " -eq " " ]];
-then
+if [ -z "$1" ]; then
     init_repo_cfg
     init_base_cfg
     init_vim_cfg
     init_asdf_cfg
-
     # install repo config only for kwarunek
     if [[ "$USER" = "kwarunek" ]]; then
         init_vc_cfg
@@ -77,4 +79,3 @@ then
 else
     init_${1}_cfg
 fi
-}

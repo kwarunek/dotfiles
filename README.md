@@ -17,23 +17,21 @@ Some aliases, functions
  - `sha1`, `rot13`, `now`
  - `GET`, `POST`... with url make request
 
+vim/neovim
+----------
 
-vim
----
-
-Pathongen with installed - check out `.gitmodules`.
+vim: pathongen and plugins in `.gitmodules`.
+nvim: lazy-nvim
 
 **Additional key bindings**:
 
  - **F1** - toggles cursorline and an indentline marking
- - **F2** - toggles NERDtree
+ - **F2** - toggles NERDtree/nvim-tree
  - **F3** - toggles nopaste
  - **F4** - (un)comments
- - **F7** - flake for py, jshint for js
  - **,**  - leader
  - **,nw** - clear trailing whitespaces
  - **,bc**  - close current buffer, preserve layout
- - **,ev**  - edit vimrc
  - **Ctrl+A**  - select all
  - **left arrow** - go to next buffer
  - **right arrow** - go to prev buffer
@@ -44,7 +42,7 @@ pkg
 **Tooling**
 
 via system package manager:
-- general: bash vim mc jq yq crudini 7zip bat
+- general: bash vim neovim mc jq yq crudini 7zip bat
 - dev: g++ gcc make automake binutils bison
 - debug: gdb strace ltrace delve xdd
 - containers: podman runc skopeo
@@ -66,6 +64,7 @@ via krew:
 **ws**:
 - ui: i3 i3-lock i3status arandr dunst feh xclip
 - net: network-manager
+- term: lxterminal
 - video: brightnessctl
 - sound: pulseaudio-utils
 - random: ldap-utils
@@ -79,3 +78,5 @@ System wide configuration
 
 Control birghtness without root:
 `sudo chmod +s $(which brightnessctl)`
+
+Font `MesloLGS Nerd Font` (https://www.nerdfonts.com/font-downloads)
