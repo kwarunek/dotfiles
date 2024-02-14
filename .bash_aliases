@@ -39,7 +39,8 @@ alias cc='xclip -selection c -i'
 alias cv='xclip -selection c -o'
 
 # lil. nasty thing
-alias vi=vim
+alias vi=nvim
+alias nvimrc='nvim ~/.config/nvim/init.lua'
 
 alias ip-lan="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
 alias ip-wan="dig +short myip.opendns.com @resolver1.opendns.com"
