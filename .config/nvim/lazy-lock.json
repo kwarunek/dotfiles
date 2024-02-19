@@ -1,7 +1,6 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
   "barbar.nvim": { "branch": "master", "commit": "71ac376acd000743146b1e08e62151b4d887bbac" },
-  "coc.nvim": { "branch": "master", "commit": "9c079ad79d66d4ede7886cc4094a822352559502" },
   "copilot.lua": { "branch": "master", "commit": "03f825956ec49e550d07875d867ea6e7c4dc8c00" },
   "kanagawa.nvim": { "branch": "master", "commit": "ab41956c4559c3eb21e713fcdf54cda1cb6d5f40" },
   "lazy.nvim": { "branch": "main", "commit": "aedcd79811d491b60d0a6577a9c1701063c2a609" },
