@@ -131,7 +131,10 @@ require("copilot").setup({
     },
 }) 
 
+require('Comment').setup()
+
 local ok, _ = pcall(vim.cmd, 'colorscheme kanagawa')
 if not ok then
     vim.cmd 'colorscheme default'
 end
+
