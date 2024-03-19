@@ -40,6 +40,7 @@ o.cursorline = true
 o.showmatch = true
 o.backspace = [[indent,eol,start]]
 o.hidden = true
+o.shiftwidth = 4
 
 -- set matchpairs+=<:>
 -- set nowildmenu
