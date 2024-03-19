@@ -18,6 +18,7 @@ init_repo_cfg (){
 init_nvim_cfg (){
     echo "Init nvim"
     setup_link ".config/nvim"
+    echo "alias vi=nvim" >> ~/.bash_local_aliases
 }
 
 

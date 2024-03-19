@@ -38,8 +38,7 @@ alias json2yaml="python3 -c 'import sys, yaml, json; yaml.dump(json.load(sys.std
 alias cc='xclip -selection c -i'
 alias cv='xclip -selection c -o'
 
-# lil. nasty thing
-alias vi=nvim
+alias vi=vim
 alias nvimrc='nvim ~/.config/nvim/init.lua'
 
 alias ip-lan="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
@@ -47,3 +46,5 @@ alias ip-wan="dig +short myip.opendns.com @resolver1.opendns.com"
 alias rm-DS="find . -type f -name '*.DS_Store' -ls -delete"
 alias rm-pyc="find . -type f -name '*.pyc' -ls -delete"
 alias rot13='tr a-zA-Z n-za-mN-ZA-M'
+
+[[ -s ~/.bash_local_aliases ]] && . ~/.bash_local_aliases
