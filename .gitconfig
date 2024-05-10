@@ -51,5 +51,5 @@
     added = yellow
     changed = green bold
     untracked = blue bold
-[url "https://"]
-  insteadOf = https://
+[url "ssh://git@stash.grupa.onet:7999/"]
+    insteadOf = https://stash.grupa.onet/
