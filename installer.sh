@@ -21,10 +21,15 @@ init_nvim_cfg (){
     echo "alias vi=nvim" >> ~/.bash_local_aliases
 }
 
+init_kitty_cfg (){
+    echo "Init kitty"
+    setup_link ".config/kitty"
+}
+
 
 init_base_cfg (){
     echo "Init base config"
-    
+
     # bash
     setup_link .bashrc
     setup_link .bash_profile
@@ -58,7 +63,7 @@ init_vim_cfg () {
 
 init_asdf_cfg () {
     ASDF_DIR=~/".asdf"
-    ASDF_VERSION='v0.11.1'
+    ASDF_VERSION='v0.14.0'
     if [ -d "$ASDF_DIR" ]; then
         git -C $ASDF_DIR pull origin master
         git -C $ASDF_DIR checkout $ASDF_VERSION
