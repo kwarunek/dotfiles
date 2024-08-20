@@ -21,12 +21,6 @@ init_nvim_cfg (){
     echo "alias vi=nvim" >> ~/.bash_local_aliases
 }
 
-init_kitty_cfg (){
-    echo "Init kitty"
-    setup_link ".config/kitty"
-}
-
-
 init_base_cfg (){
     echo "Init base config"
 
