@@ -25,7 +25,9 @@
     i = "!sh -c 'git-info'"
     info = "!sh -c 'git-info'"
     reclone = "!sh -c 'git-reclone'"
+    split = "!f() { git subtree split --prefix=$1 -b split-$1; echo 'Run in the new repo:\n\tgit pull' `pwd` split-$1 > /dev/stdout;}; f"
     whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+    rehead = "!sh -c 'git reset $(git merge-base main $(git branch --show-current))'"
     st = status
     br = branch
     brd = "!f() { git push --delete origin $1; git branch -D $1;}; f"
