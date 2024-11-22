@@ -30,6 +30,7 @@ init_base_cfg (){
     setup_link .bash_aliases
     setup_link .bash_colors
     setup_link .bash_functions
+    setup_link .config/tmux
 
     # k8s
     setup_link .kubectl_aliases
@@ -68,7 +69,7 @@ init_asdf_cfg () {
 }
 
 if [ -z "$1" ]; then
-    init_repo_cfg
+    git rev-parse --is-inside-work-tree &>/dev/null || init_repo_cfg
     init_base_cfg
     init_vim_cfg
     init_asdf_cfg
