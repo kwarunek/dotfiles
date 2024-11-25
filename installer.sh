@@ -58,7 +58,7 @@ init_vim_cfg () {
 
 init_asdf_cfg () {
     ASDF_DIR=~/".asdf"
-    ASDF_VERSION='v0.14.0'
+    ASDF_VERSION='v0.14.1'
     if [ -d "$ASDF_DIR" ]; then
         git -C $ASDF_DIR pull origin master
         git -C $ASDF_DIR checkout $ASDF_VERSION
