@@ -2,13 +2,23 @@
     email = krzysztof@warunek.net
     username = kwarunek
     name = Krzysztof Warunek
+    signingkey = E8E0175EA218D721
+[column]
+    ui = auto
+[branch]
+    sort = -committerdate
+[tag]
+    sort = version:refname
 [diff]
     tool = vimdiff
 [merge]
     tool = vimdiff
     conflictstyle = diff3
+    algorithm = histogram
+    renames = true
 [push]
     default = current
+    autoSetupRemote = true
     followTags = true
 [status]
     showUntrackedFiles = all
@@ -55,3 +65,5 @@
     untracked = blue bold
 [url "ssh://git@stash.grupa.onet:7999/"]
     insteadOf = https://stash.grupa.onet/
+[commit]
+    gpgsign = true

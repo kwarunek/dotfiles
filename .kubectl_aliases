@@ -59,7 +59,7 @@ alias kdsec='kubectl describe secret'
 alias ksysdsec='kubectl --namespace=kube-system describe secret'
 alias krmsec='kubectl delete secret'
 alias ksysrmsec='kubectl --namespace=kube-system delete secret'
-alias kgn='kubectl get nodes'
+alias kgn="kubectl get nodes --sort-by='.metadata.creationTimestamp'"
 alias ksysgn='kubectl --namespace=kube-system get nodes'
 alias kdn='kubectl describe nodes'
 alias ksysdn='kubectl --namespace=kube-system describe nodes'
