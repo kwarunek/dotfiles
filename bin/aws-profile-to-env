@@ -1,0 +1,56 @@
+#!/bin/bash
+
+PROFILE_NAME="${1:-$AWS_PROFILE}"
+
+if [[ -z "$PROFILE_NAME" ]]; then
+  echo "Error: No profile name provided."
+  echo "Usage: $0 <profile-name> (or via the AWS_PROFILE environment)"
+  exit 1
+fi
+
+CREDS="$HOME/.aws/credentials"
+if [[ ! -f "$CREDS" ]]; then
+  echo "Error: AWS credentials file not found at $CREDS"
+  exit 1
+fi
+
+# Parse the credentials file
+found_profile=0
+while IFS= read -r line; do
+  # Trim leading/trailing whitespace
+  line=$(echo "$line" | sed 's/^[ \t]*//;s/[ \t]*$//')
+
+  # Check if the line is a profile header
+  if [[ "$line" =~ ^\[.*\]$ ]]; then
+    if [[ "$line" == "[$PROFILE_NAME]" ]]; then
+      found_profile=1
+    else
+      found_profile=0
+    fi
+    continue
+  fi
+
+  # If we're in the correct profile, extract credentials
+  if [[ $found_profile -eq 1 ]]; then
+    if [[ "$line" =~ ^aws_access_key_id[[:space:]]*=[[:space:]]*(.*)$ ]]; then
+      aws_access_key_id="${BASH_REMATCH[1]}"
+    elif [[ "$line" =~ ^aws_secret_access_key[[:space:]]*=[[:space:]]*(.*)$ ]]; then
+      aws_secret_access_key="${BASH_REMATCH[1]}"
+    elif [[ "$line" =~ ^aws_session_token[[:space:]]*=[[:space:]]*(.*)$ ]]; then
+      aws_session_token="${BASH_REMATCH[1]}"
+    fi
+  fi
+done < "$CREDS"
+
+# Check if we found the required credentials
+if [[ -z "$aws_access_key_id" || -z "$aws_secret_access_key" ]]; then
+  echo "Error: Profile '$PROFILE_NAME' not found or missing required credentials."
+  exit 1
+fi
+
+# Output the credentials as export commands
+echo "export AWS_ACCESS_KEY_ID=$aws_access_key_id"
+echo "export AWS_SECRET_ACCESS_KEY=$aws_secret_access_key"
+if [[ -n "$aws_session_token" ]]; then
+  echo "export AWS_SESSION_TOKEN=$aws_session_token"
+fi

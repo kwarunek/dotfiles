@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+perl -MIO::Socket::INET -e 'die "Usage: $0 <host> <port>\n" unless @ARGV == 2; my ($host, $port) = @ARGV; print "Connected to $host:$port\n" if IO::Socket::INET->new(PeerAddr=>$host, PeerPort=>$port, Proto=>"tcp", Timeout=>2);' $1 $2

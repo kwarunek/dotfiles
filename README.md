@@ -68,7 +68,7 @@ via krew:
 - video: brightnessctl
 - sound: pulseaudio-utils
 - random: ldap-utils
-- x: keepassxc firefox gimp libreoffice
+- x: keepassxc librewolf gimp libreoffice
 
 Manual stuff
 ------------

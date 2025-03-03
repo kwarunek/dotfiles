@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+python3 -c 'import sys, socket; host, port = sys.argv[1], int(sys.argv[2]); print(f"Connected to {host}:{port}") if socket.create_connection((host, port), timeout=2) else print(f"Unable to connect to {host}:{port}")' $1 $2
