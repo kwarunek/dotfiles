@@ -62,9 +62,9 @@ via krew:
 - ns ctx
 
 **ws**:
-- ui: i3 i3-lock i3status arandr dunst feh xclip
+- ui: i3 i3-lock i3status arandr dunst feh xclip rofi
 - net: network-manager
-- term: lxterminal
+- term: lxterminal starship
 - video: brightnessctl
 - sound: pulseaudio-utils
 - random: ldap-utils

@@ -2,7 +2,7 @@
 
 setup_link() {
     fname=$1
-    rm -f ~/$fname
+    rm -rf ~/$fname
     ln -s ~/dotfiles/$fname ~/$fname
 }
 
@@ -31,6 +31,9 @@ init_base_cfg (){
     setup_link .bash_colors
     setup_link .bash_functions
     setup_link .config/tmux
+    setup_link .config/rofi
+    setup_link .config/starship.toml
+    setup_link .config/i3
 
     # k8s
     setup_link .kubectl_aliases

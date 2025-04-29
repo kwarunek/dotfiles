@@ -1,0 +1,45 @@
+# GLOBAL SETTINGS
+format = """
+$cmd_duration$python$kubernetes$aws$directory$git_branch$character
+"""
+
+add_newline = true
+
+[username]
+style_user = "bg:#1b1b1b fg:#aaaaaa"
+style_root = "bg:#1b1b1b fg:#aaaaaa"
+format = "[ $user ]($style)[](fg:#1b1b1b bg:#2b2b2b)"
+show_always = true
+
+[python]
+symbol = " "  # optional: Python logo
+style = "fg:#aaaaaa bg:#1b1b1b"
+format = "[$symbol$virtualenv]($style) "
+
+[kubernetes]
+style = "bg:#2b2b2b fg:#aaaaaa"
+format = "[ $context@$namespace ]($style)[](fg:#2b2b2b bg:#3b3b3b)"
+disabled = false
+
+[directory]
+style = "bg:#4b4b4b fg:#aaaaaa"
+format = "[ $path ]($style)[](fg:#4b4b4b)"
+truncation_length = 3
+truncate_to_repo = true
+
+[aws]
+symbol = " "  # Nerd Font: Amazon logo
+style = "bg:#3b3b3b fg:#aaaaaa"
+format = "[ $profile ]($style)[](fg:#3b3b3b bg:#4b4b4b)"
+force_display = true
+
+[git_branch]
+style = "bg:#5b5b5b fg:#aaaaaa"
+format = "\n[ $branch ]($style)[](fg:#5b5b5b bg:#1b1b1b)"
+symbol = ""
+
+[cmd_duration]
+min_time = 1000  # in milliseconds (1s)
+format = "[ $duration ]($style)[](fg:#1b1b1b bg:#000)\n"
+style = "fg:#7b7b7b bg:#1b1b1b"
+show_milliseconds = true
