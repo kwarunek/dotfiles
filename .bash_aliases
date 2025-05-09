@@ -35,6 +35,8 @@ alias ssh-new-key='ssh-keygen -t ed25519 -a 128'
 alias yaml2json="python3 -c 'import sys, yaml, json; json.dump(yaml.safe_load(sys.stdin if len(sys.argv) != 2 else open(sys.argv[1])), sys.stdout, indent=4)'"
 alias json2yaml="python3 -c 'import sys, yaml, json; yaml.dump(json.load(sys.stdin if len(sys.argv) != 2 else open(sys.argv[1])), sys.stdout, indent=2)'"
 
+alias suroot="sudo -Es su -m"
+
 # clipboard
 alias cc='xclip -selection c -i'
 alias cv='xclip -selection c -o'
