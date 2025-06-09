@@ -46,3 +46,24 @@ batdiff() {
 batman() {
     MANPAGER="sh -c 'col -bx | bat -l man -p'"  man $@
 }
+
+ssh-get-hash(){
+    case $1 in
+          *.pub) ssh-keygen -lf $1 ;;
+          *) for key in ~/.ssh/*.pub; do echo -n "Key: $key "; ssh-keygen -lf "$key"; echo; done ;;
+    esac
+}
+
+ssh-forward-key() {
+    KEY=$DEFAULT_SSH_KEY_TO_FORWARD
+    if [ -n "$1" ]; then
+        KEY=$1
+    fi
+    if [ ! -f "$KEY" ]; then
+        echo "Key $KEY does not exist"
+        return 1
+    fi
+    pkill -9 -f ssh-agent
+    eval $(ssh-agent -s)
+    ssh-add $KEY
+}
