@@ -28,12 +28,12 @@ init_base_cfg (){
     setup_link .bashrc
     setup_link .bash_profile
     setup_link .bash_aliases
-    setup_link .wezterm.lua
     setup_link .bash_colors
     setup_link .bash_functions
     setup_link .config/tmux
     setup_link .config/rofi
     setup_link .config/starship.toml
+    setup_link .config/alacritty
     setup_link .config/i3
 
     # k8s

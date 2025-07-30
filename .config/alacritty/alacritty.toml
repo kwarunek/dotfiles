@@ -1,0 +1,81 @@
+[font]
+size = 13.0
+
+[font.normal]
+family = "MesloLGS Nerd Font Propo"
+
+[scrolling]
+history = 50000
+
+[selection]
+save_to_clipboard = false
+
+[window]
+decorations = "full"
+dynamic_padding = false
+
+[window.padding]
+x = 2
+y = 1
+
+[keyboard]
+bindings = [
+  { key = "PageUp",   mods = "Control", action = "ScrollPageUp"   },
+  { key = "PageDown", mods = "Control", action = "ScrollPageDown" },
+  { key = "Up",       mods = "Control", action = "ScrollLineUp"   },
+  { key = "Down",     mods = "Control", action = "ScrollLineDown" }
+]
+
+# color scheme
+[colors.primary]
+background = '#0c0c0c'
+foreground = '#cccccc'
+
+# Normal colors
+[colors.normal]
+black      = '#0c0c0c'
+red        = '#c50f1f'
+green      = '#13a10e'
+yellow     = '#c19c00'
+blue       = '#0037da'
+magenta    = '#881798'
+cyan       = '#3a96dd'
+white      = '#cccccc'
+
+# Bright colors
+[colors.bright]
+black      = '#767676'
+red        = '#e74856'
+green      = '#16c60c'
+yellow     = '#f9f1a5'
+blue       = '#3b78ff'
+magenta    = '#b4009e'
+cyan       = '#61d6d6'
+white      = '#f2f2f2'
+
+#blood moon
+# [colors.primary]
+# background = '#10100E'
+# foreground = '#C6C6C4'
+#
+# # Normal colors
+# [colors.normal]
+# black   = '#10100E'
+# red     = '#C40233'
+# green   = '#009F6B'
+# yellow  = '#FFD700'
+# blue    = '#0087BD'
+# magenta = '#9A4EAE'
+# cyan    = '#20B2AA'
+# white   = '#C6C6C4'
+#
+# # Bright colors
+# [colors.bright]
+# black   = '#696969'
+# red     = '#FF2400'
+# green   = '#03C03C'
+# yellow  = '#FDFF00'
+# blue    = '#007FFF'
+# magenta = '#FF1493'
+# cyan    = '#00CCCC'
+# white   = '#FFFAFA'
