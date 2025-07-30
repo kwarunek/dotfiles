@@ -64,7 +64,7 @@ init_asdf_cfg () {
     ASDF_DIR=~/".asdf"
     ASDF_VERSION='v0.14.1'
     if [ -d "$ASDF_DIR" ]; then
-        git -C $ASDF_DIR pull origin master
+        git -C $ASDF_DIR
         git -C $ASDF_DIR checkout $ASDF_VERSION
     else
         git clone https://github.com/asdf-vm/asdf.git $ASDF_DIR --branch $ASDF_VERSION
