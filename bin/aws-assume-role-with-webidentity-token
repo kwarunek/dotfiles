@@ -1,0 +1,42 @@
+#!/bin/bash
+
+ROLE=$1
+TOKEN=$2
+SESSION_NAME=${3:-"debug-session"}
+
+# if TOKEN does not  exists
+if [ -z "$ROLE" ]; then
+  echo "Usage: $0 <role-arn> <token-string-or-file-path> [<session-name>]"
+  exit 1
+fi
+
+if [ -z "$TOKEN" ]; then
+  echo "Usage: $0 <role-arn> <token-string-or-file-path> [<session-name>]"
+  exit 1
+fi
+
+if [ ! -f "$TOKEN" ]; then
+    TEMP_FILE=$(mktemp /tmp/aws-web-identity-token.XXXXXX)
+    echo $TOKEN > $TEMP_FILE
+    TOKEN=$TEMP_FILE
+fi
+
+CONF=~/.aws/credentials
+
+JSON=$(aws sts assume-role-with-web-identity \
+  --role-arn $ROLE \
+  --role-session-name $SESSION_NAME \
+  --web-identity-token file://$TOKEN)
+
+AWS_ACCESS_KEY_ID=$(echo ${JSON} | jq --raw-output ".Credentials[\"AccessKeyId\"]");
+AWS_SECRET_ACCESS_KEY=$(echo ${JSON} | jq --raw-output ".Credentials[\"SecretAccessKey\"]");
+AWS_SESSION_TOKEN=$(echo ${JSON} | jq --raw-output ".Credentials[\"SessionToken\"]");
+AWS_EXPIRATION=$(echo ${JSON} | jq --raw-output ".Credentials[\"Expiration\"]");
+
+crudini --set "$CONF" $ROLE aws_access_key_id "$AWS_ACCESS_KEY_ID"
+crudini --set "$CONF" $ROLE aws_secret_access_key "$AWS_SECRET_ACCESS_KEY"
+crudini --set "$CONF" $ROLE aws_session_token "$AWS_SESSION_TOKEN"
+crudini --set "$CONF" $ROLE aws_expiration "$AWS_EXPIRATION"
+
+echo "Profile [$ROLE] created in $CONF"
+echo "export AWS_PROFILE=$ROLE"
