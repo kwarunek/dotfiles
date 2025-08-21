@@ -70,4 +70,6 @@ if which terraform &>/dev/null; then
     complete -C terraform terraform
 fi
 
-eval "$(starship init bash)"
+if which starship &>/dev/null; then
+    eval "$(starship init bash)"
+fi
