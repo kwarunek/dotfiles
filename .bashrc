@@ -8,7 +8,7 @@ shopt -s checkwinsize
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 export HISTSIZE=9999999999
 export HISTFILESIZE=9999999999
-export HISTIGNORE="ls:ls -l:ll:history:vi:vim:top:ps:ps axf:cd:git reclone:git pull:git diff:git push:git st:pyhn:git log:fg"
+export HISTIGNORE="ls:ls -l:ll:history:vi:vim:top:ps:ps axf:cd:git reclone:git pull:git diff:git push:git st:pyhn:git log:fg:mc:clear:pwd"
 
 PROMPT_COMMAND='history -a;'
 
