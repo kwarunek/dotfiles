@@ -1,7 +1,9 @@
 #!/bin/sh
 
 aws-use() {
+
     profile="$1"
+    force="$2"
     gray='\033[90m'
     reset='\033[0m'
     caller_identity=""
@@ -22,30 +24,30 @@ aws-use() {
     fi
 
     if caller_identity=$(aws --profile "$profile" sts get-caller-identity --output json 2>/dev/null); then
-        export AWS_PROFILE="$profile"
-        printf '%b\n' "${gray}${caller_identity}${reset}"
-        return 0
+        if [ -n "$force" ]; then
+            echo "Already authenticated with profile '$profile', but force flag is set. Re-authenticating..." >&2
+        else
+            export AWS_PROFILE="$profile"
+            printf '%b\n' "${gray}${caller_identity}${reset}"
+            return 0
+        fi
     fi
 
-    if crudini --get ~/.aws/credentials "$profile" >/dev/null 2>&1; then
+    if crudini --get ~/.aws/config "profile $profile" >/dev/null 2>&1; then
+        sso_session=""
+        sso_session=$(crudini --get ~/.aws/config "profile $profile" sso_session 2>/dev/null)
+
+        if [ -n "$sso_session" ]; then
+            echo "SSO session found, logging in..." >&2
+            aws sso login --sso-session "$sso_session"
+        else
+            echo "No SSO session, using saml2aws..." >&2
+            saml2aws login -a "$profile" --force
+        fi
         export AWS_PROFILE="$profile"
     else
-        if crudini --get ~/.aws/config "profile $profile" >/dev/null 2>&1; then
-            sso_session=""
-            sso_session=$(crudini --get ~/.aws/config "profile $profile" sso_session 2>/dev/null)
-
-            if [ -n "$sso_session" ]; then
-                echo "SSO session found, logging in..." >&2
-                aws sso login --sso-session "$sso_session"
-            else
-                echo "No SSO session, using saml2aws..." >&2
-                saml2aws login -a "$profile"
-            fi
-            export AWS_PROFILE="$profile"
-        else
-            echo "Profile '$profile' not found in AWS config" >&2
-            return 1
-        fi
+        echo "Profile '$profile' not found in AWS config" >&2
+        return 1
     fi
 
     caller_identity=$(aws --profile "$profile" sts get-caller-identity --output json)
