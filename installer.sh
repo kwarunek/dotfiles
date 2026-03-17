@@ -3,6 +3,7 @@
 setup_link() {
     fname=$1
     rm -rf ~/$fname
+    mkdir -p $(dirname ~/$fname)
     ln -s ~/dotfiles/$fname ~/$fname
 }
 
@@ -37,6 +38,7 @@ init_base_cfg (){
     setup_link .config/starship.toml
     setup_link .config/alacritty
     setup_link .config/i3
+    setup_link .aws/cli/alias
 
     # k8s
     setup_link .kubectl_aliases
@@ -66,7 +68,6 @@ init_asdf_cfg () {
     ASDF_DIR=~/".asdf"
     ASDF_VERSION='v0.14.1'
     if [ -d "$ASDF_DIR" ]; then
-        git -C $ASDF_DIR
         git -C $ASDF_DIR checkout $ASDF_VERSION
     else
         git clone https://github.com/asdf-vm/asdf.git $ASDF_DIR --branch $ASDF_VERSION
