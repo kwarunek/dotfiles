@@ -6,5 +6,5 @@ export EDITOR=vim
 export SAM_CLI_TELEMETRY=0
 export TERMINAL=lxterminal
 
-test -e ~/.profile_local && source ~/.profile_local
-test -e ~/.cargo/env && source ~/.cargo/env
+[ -f ~/.profile_local ] && . ~/.profile_local
+[ -f ~/.cargo/env ] && . ~/.cargo/env

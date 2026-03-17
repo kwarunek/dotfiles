@@ -1,1 +1,1 @@
-test -e ~/.bashrc && source ~/.bashrc
+test -e "$HOME/.bashrc" && source "$HOME/.bashrc"

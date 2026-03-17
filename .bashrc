@@ -34,10 +34,10 @@ case "$TERM" in
     ;;
 esac
 
-[[ -s ~/.bash_colors ]] && . ~/.bash_colors
-[[ -s ~/.bash_aliases ]] && . ~/.bash_aliases
-[[ -s ~/.bash_functions ]] && . ~/.bash_functions
-[[ -s ~/.bash_local ]] && . ~/.bash_local
+[[ -f ~/.bash_colors ]] && source ~/.bash_colors
+[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
+[[ -f ~/.bash_functions ]] && source ~/.bash_functions
+[[ -f ~/.bash_local ]] && source ~/.bash_local
 
 
 [[ -z ${UserTColor-} ]] && UserTColor=95
@@ -48,13 +48,13 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-[ -s "$HOME/.asdf/asdf.sh" ] && \. $HOME/.asdf/asdf.sh
-[ -s "$HOME/.asdf/completions/asdf.bash" ] && \. $HOME/.asdf/completions/asdf.bash
+[[ -f "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
+[[ -f "$HOME/.asdf/completions/asdf.bash" ]] && source "$HOME/.asdf/completions/asdf.bash"
 
 
 # Kubernetes
-if which kubectl &>/dev/null; then
-    [[ -s ~/.kubectl_aliases ]] && . ~/.kubectl_aliases
+if command -v kubectl &>/dev/null; then
+    [[ -f ~/.kubectl_aliases ]] && source ~/.kubectl_aliases
 
     if [ ! -f ~/.bash_cache.d/kubectl_completion ]; then
         kubectl completion bash > ~/.bash_cache.d/kubectl_completion
@@ -65,11 +65,11 @@ if which kubectl &>/dev/null; then
 fi
 
 # Terraform
-if which terraform &>/dev/null; then
+if command -v terraform &>/dev/null; then
     complete -C terraform terraform
 fi
 
-if which starship &>/dev/null; then
+if command -v starship &>/dev/null; then
     if [ ! -f ~/.bash_cache.d/starship ]; then
         starship init bash > ~/.bash_cache.d/starship
     fi

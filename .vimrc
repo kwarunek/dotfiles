@@ -39,7 +39,6 @@ set showmatch          " Shows matching brackets when text indicator is over the
 set scrolloff=5        " Show 5 lines of context around the cursor
 set cursorline
 set showcmd
-set ttyfast            " Improves redrawing for newer computers
 set backspace=indent,eol,start
 set gdefault
 set ttimeout          " for key codes
