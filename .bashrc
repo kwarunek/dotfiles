@@ -1,4 +1,4 @@
-[ -z "$PS1" ] && return
+[[ -z "$PS1" ]] && return
 
 HISTCONTROL=ignoredups:erasedups:ignorespace
 
@@ -12,7 +12,7 @@ export HISTIGNORE="ls:ls -l:ll:history:vi:vim:top:ps:ps axf:cd:git reclone:git p
 
 PROMPT_COMMAND='history -a;'
 
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+if [[ -z "$debian_chroot" ]] && [[ -r /etc/debian_chroot ]]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
@@ -44,7 +44,7 @@ esac
 
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;${UserTColor}m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ '
 
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+if [[ -f /etc/bash_completion ]] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
@@ -56,7 +56,7 @@ fi
 if command -v kubectl &>/dev/null; then
     [[ -f ~/.kubectl_aliases ]] && source ~/.kubectl_aliases
 
-    if [ ! -f ~/.bash_cache.d/kubectl_completion ]; then
+    if [[ ! -f ~/.bash_cache.d/kubectl_completion ]]; then
         kubectl completion bash > ~/.bash_cache.d/kubectl_completion
     fi
 
@@ -70,7 +70,7 @@ if command -v terraform &>/dev/null; then
 fi
 
 if command -v starship &>/dev/null; then
-    if [ ! -f ~/.bash_cache.d/starship ]; then
+    if [[ ! -f ~/.bash_cache.d/starship ]]; then
         starship init bash > ~/.bash_cache.d/starship
     fi
     source ~/.bash_cache.d/starship

@@ -1,5 +1,3 @@
-#!/bin/sh
-
 aws-use() {
 
     profile="$1"
