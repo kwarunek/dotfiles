@@ -31,6 +31,7 @@ init_base_cfg (){
     setup_link .bash_colors
     setup_link .bash_functions
     setup_link .bash_functions.d
+    setup_link .bash_cache.d
     setup_link .config/tmux
     setup_link .config/rofi
     setup_link .config/starship.toml

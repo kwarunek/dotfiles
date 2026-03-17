@@ -24,7 +24,6 @@ case "$TERM" in
     POTENTIAL_TERM=${TERM}-256color
     POTENTIAL_TERMINFO=${TERM:0:1}/$POTENTIAL_TERM
 
-    # better to check $(toe -a | awk '{print $1}') maybe?
     BOX_TERMINFO_DIR=/usr/share/terminfo
     [[ -f $BOX_TERMINFO_DIR/$POTENTIAL_TERMINFO ]] && \
         export TERM=$POTENTIAL_TERM
@@ -32,11 +31,6 @@ case "$TERM" in
     HOME_TERMINFO_DIR=$HOME/.terminfo
     [[ -f $HOME_TERMINFO_DIR/$POTENTIAL_TERMINFO ]] && \
         export TERM=$POTENTIAL_TERM
-
-    TERM_CAP_LIST==$(toe -a | awk '{print $1}')
-    [[ "$TERM_CAP_LIST" =~ "$POTENTIAL_TERM" ]] && \
-        export TERM=$POTENTIAL_TERM
-
     ;;
 esac
 
@@ -61,7 +55,12 @@ fi
 # Kubernetes
 if which kubectl &>/dev/null; then
     [[ -s ~/.kubectl_aliases ]] && . ~/.kubectl_aliases
-    source <(kubectl completion bash)
+
+    if [ ! -f ~/.bash_cache.d/kubectl_completion ]; then
+        kubectl completion bash > ~/.bash_cache.d/kubectl_completion
+    fi
+
+    source ~/.bash_cache.d/kubectl_completion
     complete -F __start_kubectl k
 fi
 
@@ -71,5 +70,8 @@ if which terraform &>/dev/null; then
 fi
 
 if which starship &>/dev/null; then
-    eval "$(starship init bash)"
+    if [ ! -f ~/.bash_cache.d/starship ]; then
+        starship init bash > ~/.bash_cache.d/starship
+    fi
+    source ~/.bash_cache.d/starship
 fi
