@@ -1,4 +1,4 @@
-C_RESTORE='\033[0m'
+C_RESTORE="\[\033[0m\]"
 
 # Regular Colors
 C_BLACK="\[\033[0;30m\]"        # Black
@@ -66,7 +66,7 @@ C_ON_IRED="\[\033[0;101m\]"     # Red
 C_ON_IGREEN="\[\033[0;102m\]"   # Green
 C_ON_IYELLOW="\[\033[0;103m\]"  # Yellow
 C_ON_IBLUE="\[\033[0;104m\]"    # Blue
-C_ON_IPURPLE="\[\033[10;95m\]"  # Purple
+C_ON_IPURPLE="\[\033[0;105m\]"
 C_ON_ICYAN="\[\033[0;106m\]"    # Cyan
 C_ON_IWHITE="\[\033[0;107m\]"   # White
 
