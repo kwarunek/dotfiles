@@ -75,3 +75,15 @@ if command -v starship &>/dev/null; then
     fi
     source ~/.bash_cache.d/starship
 fi
+
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+
+# atuin
+[[ -f "$HOME/.atuin/bin/env" ]] && source "$HOME/.atuin/bin/env"
+if command -v atuin &>/dev/null; then
+    if [[ ! -f ~/.bash_cache.d/atuin ]]; then
+        atuin init bash > ~/.bash_cache.d/atuin
+    fi
+    source ~/.bash_cache.d/atuin
+fi

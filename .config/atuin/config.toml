@@ -1,4 +1,4 @@
-db_path = ~/.local/atuin/history.db
+db_path = "~/.local/atuin/history.db"
 dialect = "uk"
 
 timezone = "local"
@@ -11,7 +11,7 @@ sync_address = "https://localhost:6443"
 # sync_frequency = "10m"
 
 ## possible values: prefix, fulltext, fuzzy, skim
-# search_mode = "fuzzy"
+search_mode = "fulltext"
 
 ## which filter mode to use by default
 ## possible values: "global", "host", "session", "session-preload", "directory", "workspace"
@@ -42,7 +42,7 @@ style = "compact"
 
 ## the maximum number of lines the interface should take up
 ## set it to 0 to always go full screen
-# inline_height = 0
+inline_height = 5
 
 ## the maximum number of lines the interface should take up
 ## when atuin is invoked from a shell up-key binding
@@ -78,7 +78,7 @@ show_preview = true
 show_numeric_shortcuts = false
 
 ## default history list format - can also be specified with the --format arg
-# history_format = "{time}\t{command}\t{duration}"
+history_format = "{time}\t{command}"
 
 ## prevent commands matching any of these regexes from being written to history.
 ## Note that these regular expressions are unanchored, i.e. if they don't start
@@ -117,7 +117,7 @@ secrets_filter = false
 
 ## Defaults to true. If enabled, upon hitting enter Atuin will immediately execute the command. Press tab to return to the shell and edit.
 # This applies for new installs. Old installs will keep the old behaviour unless configured otherwise.
-enter_accept = true
+enter_accept = false
 
 ## Defaults to false. If enabled, when triggered after && or ||, Atuin will complete commands to chain rather than replace the current line.
 # command_chaining = false
@@ -179,8 +179,8 @@ ignored_commands = [
    "cd",
    "..",
    "ls",
-   "vi"
-    "git push",
+   "vi",
+   "git push",
 ]
 
 [keys]
