@@ -1,4 +1,4 @@
-ssh-forward-key() {
+ssh_forward_key() {
     KEY=$DEFAULT_SSH_KEY_TO_FORWARD
     if [ -n "$1" ]; then
         KEY=$1
