@@ -1,5 +1,6 @@
 #!/bin/bash
 WS_DIR=${WS_DIR:-"/tmp/ws"}
+CONTAINER_ENGINE=${CONTAINER_ENGINE:-"podman"}
 
 ws() {
     local dir=""
@@ -20,7 +21,7 @@ ws() {
                 echo "  -d DIR          Mount directory DIR to /mnt/DIR inside container"
                 echo "  --cpu MILLICORES Set container CPU limit in millicores (default: 1500)"
                 echo "  --mem MB         Set container memory limit in MB (default: 1024)"
-                echo "  -x              Run docker without network"
+                echo "  -x              Run container without network"
                 echo "  -h, --help      Show this help message"
                 return 0
                 ;;
@@ -89,12 +90,20 @@ ws() {
     mount_arg="$mount_arg -v $WS_DIR/$name:/workspace"
 
     echo "port $port $WS_DIR/$name mounted in /workspace"
-    docker run -it -h "$name" \
+    local image="ws"
+    local pull_arg=""
+    if [[ "$CONTAINER_ENGINE" == "podman" ]]; then
+        image="localhost/ws"
+        pull_arg="--pull=never"
+    fi
+
+    $CONTAINER_ENGINE run -it -h "$name" \
         --cap-drop=ALL \
         --security-opt=no-new-privileges:true \
         --pids-limit=256 \
         --memory="${memory_mb}m" --cpus="$cpus" \
         --user "$(id -u):$(id -g)" --rm \
+        $pull_arg \
         -p "$port:$port" $network_arg $mount_arg \
-        ws
+        "$image"
 }
