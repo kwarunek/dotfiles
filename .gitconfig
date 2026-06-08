@@ -5,6 +5,8 @@
     signingkey = E8E0175EA218D721
 [column]
     ui = auto
+[core]
+    hooksPath = /dev/null
 [branch]
     sort = -committerdate
 [tag]

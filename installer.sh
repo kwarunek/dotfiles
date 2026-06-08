@@ -9,7 +9,7 @@ setup_link() {
 
 init_repo_cfg (){
     cd ~
-    git clone https://github.com/kwarunek/dotfiles.git &>/dev/null
+    git clone https://codeberg.org/kwarunek/dotfiles.git &>/dev/null
     cd dotfiles
     git pull
     git submodule init

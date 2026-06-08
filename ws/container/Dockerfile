@@ -49,7 +49,7 @@ RUN userdel -r ubuntu 2>/dev/null || true && \
 USER ${USERNAME}
 
 # Download and run dotfiles installer
-RUN curl -fsSL https://raw.githubusercontent.com/kwarunek/dotfiles/master/installer.sh -o /tmp/installer.sh && \
+RUN curl -fsSL https://codeberg.org/kwarunek/dotfiles/raw/branch/master/installer.sh -o /tmp/installer.sh && \
     chmod +x /tmp/installer.sh && \
     bash /tmp/installer.sh && \
     bash /tmp/installer.sh nvim && \
