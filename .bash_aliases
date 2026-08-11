@@ -28,10 +28,11 @@ alias halt='sudo /sbin/halt'
 alias shutdown='sudo /sbin/shutdown'
 alias jqr='jq -r'
 alias docker="sudo /usr/bin/docker"
-alias docker-compose="sudo /usr/local/bin/docker-compose"
+alias docker-compose="sudo /usr/bin/docker-compose"
 alias git-reclone='source ~/bin/git-reclone'
 alias ssh-new-key='ssh-keygen -t ed25519 -a 128'
 alias cal='ncal -M -3 -b'
+alias lss='du -BM -d 1 | sort -n'
 
 alias yaml2json="python3 -c 'import sys, yaml, json; json.dump(yaml.safe_load(sys.stdin if len(sys.argv) != 2 else open(sys.argv[1])), sys.stdout, indent=4)'"
 alias json2yaml="python3 -c 'import sys, yaml, json; yaml.dump(json.load(sys.stdin if len(sys.argv) != 2 else open(sys.argv[1])), sys.stdout, indent=2)'"
