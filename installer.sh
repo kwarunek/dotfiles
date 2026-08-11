@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
 setup_link() {
-    fname=$1
-    rm -rf ~/$fname
-    mkdir -p $(dirname ~/$fname)
-    ln -s ~/dotfiles/$fname ~/$fname
+    local fname="$1"
+    [[ -z "$fname" ]] && { echo "Error: empty filename"; return 1; }
+    unlink "${HOME}/${fname}" 2>/dev/null || rm -rf "${HOME}/${fname}"
+    mkdir -p "$(dirname "${HOME}/${fname}")"
+    ln -s "${HOME}/dotfiles/${fname}" "${HOME}/${fname}"
 }
 
 init_repo_cfg (){
@@ -87,5 +88,8 @@ if [ -z "$1" ]; then
         init_vc_cfg
     fi
 else
-    init_${1}_cfg
+    case "$1" in
+        base|vim|nvim|vc|asdf) init_${1}_cfg ;;
+        *) echo "Unknown target: $1"; exit 1 ;;
+    esac
 fi

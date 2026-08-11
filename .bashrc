@@ -56,7 +56,9 @@ fi
 if command -v kubectl &>/dev/null; then
     [[ -f ~/.kubectl_aliases ]] && source ~/.kubectl_aliases
 
-    if [[ ! -f ~/.bash_cache.d/kubectl_completion ]]; then
+    _kubectl_bin=$(command -v kubectl)
+    if [[ ! -f ~/.bash_cache.d/kubectl_completion || \
+          ~/.bash_cache.d/kubectl_completion -ot "$_kubectl_bin" ]]; then
         kubectl completion bash > ~/.bash_cache.d/kubectl_completion
     fi
 
@@ -70,7 +72,9 @@ if command -v terraform &>/dev/null; then
 fi
 
 if command -v starship &>/dev/null; then
-    if [[ ! -f ~/.bash_cache.d/starship ]]; then
+    _starship_bin=$(command -v starship)
+    if [[ ! -f ~/.bash_cache.d/starship || \
+          ~/.bash_cache.d/starship -ot "$_starship_bin" ]]; then
         starship init bash > ~/.bash_cache.d/starship
     fi
     source ~/.bash_cache.d/starship
@@ -82,7 +86,9 @@ fi
 # atuin
 [[ -f "$HOME/.atuin/bin/env" ]] && source "$HOME/.atuin/bin/env"
 if command -v atuin &>/dev/null; then
-    if [[ ! -f ~/.bash_cache.d/atuin ]]; then
+    _atuin_bin=$(command -v atuin)
+    if [[ ! -f ~/.bash_cache.d/atuin || \
+          ~/.bash_cache.d/atuin -ot "$_atuin_bin" ]]; then
         atuin init bash > ~/.bash_cache.d/atuin
     fi
     source ~/.bash_cache.d/atuin

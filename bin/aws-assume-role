@@ -38,13 +38,13 @@ if [[ $ROLE =~ ^arn:aws:iam::[0-9]*:role\/[A-Za-z0-9\-]* ]]; then
     ROLE="${ROLE_ARN##*/}"
 else
     if [ -z "$ACCOUNT_ID" ]; then
-        ACCOUNT_ID=`aws sts get-caller-identity | jq --raw-output '.Account'`
+        ACCOUNT_ID=$(aws sts get-caller-identity | jq --raw-output '.Account')
     fi
     ROLE_ARN="arn:aws:iam::$ACCOUNT_ID:role/$ROLE"
 fi
 
 CONF=~/.aws/credentials
-JSON=`aws sts assume-role --role-arn ${ROLE_ARN} --role-session-name assumed-${ROLE} $@`;
+JSON=$(aws sts assume-role --role-arn "${ROLE_ARN}" --role-session-name "assumed-${ROLE}" "$@")
 
 AWS_ACCESS_KEY_ID=$(echo ${JSON} | jq --raw-output ".Credentials[\"AccessKeyId\"]");
 AWS_SECRET_ACCESS_KEY=$(echo ${JSON} | jq --raw-output ".Credentials[\"SecretAccessKey\"]");

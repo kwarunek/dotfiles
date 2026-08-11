@@ -6,6 +6,8 @@
 [column]
     ui = auto
 [core]
+    # security: disbale all hooks
+    # any checks should be done in CI/CD pipeline or manually before pushing
     hooksPath = /dev/null
 [branch]
     sort = -committerdate
