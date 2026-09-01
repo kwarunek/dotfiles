@@ -27,10 +27,12 @@
 [status]
     showUntrackedFiles = all
 [alias]
+    git = !exec git
     ci = commit
     co = checkout
     c-p = cherry-pick
     lc = log ORIG_HEAD.. --stat --no-merges
+    cloneh = "!f() { git clone \"$@\" && cd \"$(basename \"${@: -1}\" .git)\" && find .git/hooks -type f -maxdepth 1 -print; }; f"
     local = log --no-merges origin/$(git br --no-color | grep '*' | awk '{print $2}')..HEAD
     llog = log --date=local
     changes=diff --name-status -r
@@ -69,3 +71,5 @@
     untracked = blue bold
 [commit]
     gpgsign = true
+[url "https://"]
+	insteadOf = git://

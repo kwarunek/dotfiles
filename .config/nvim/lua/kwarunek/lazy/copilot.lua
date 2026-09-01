@@ -1,4 +1,5 @@
-return {
+return {}
+--[[ return {
     "zbirenbaum/copilot.lua",
     version = "*",
     lazy = false,
@@ -7,3 +8,4 @@ return {
         require("copilot").setup({})
     end,
 }
+]]
