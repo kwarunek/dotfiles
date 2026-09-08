@@ -5,6 +5,6 @@ Container based "workspace" .
 ## Build
 
 ```bash
-docker build -t ws .
-docker build --build-arg USERNAME=user -t ws .
+podman build --progress=plain --pull --no-cache --build-arg USERNAME=kwarunek -t ws ws
+podman build --progress=plain --no-cache --build-arg USERNAME=kwarunek -t llm llm
 ```
