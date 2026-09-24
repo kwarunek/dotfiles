@@ -39,6 +39,7 @@ init_base_cfg (){
     setup_link .config/atuin
     setup_link .config/i3
     setup_link .config/rofi
+    setup_link .config/containers
     setup_link .config/starship.toml
     setup_link .config/tmux
     setup_link .aws/cli/alias
