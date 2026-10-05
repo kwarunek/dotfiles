@@ -74,3 +74,6 @@
     gpgsign = true
 [url "https://"]
 	insteadOf = git://
+[credential "https://gitlab.com"]
+	helper = 
+	helper = !/usr/bin/glab auth git-credential
