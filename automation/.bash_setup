@@ -1,0 +1,20 @@
+# vim: set ft=sh:
+
+_automation_setup() {
+    local script dir name alias_name comp
+    for script in "$HOME"/automation/*/run.sh; do
+        [[ -f "$script" ]] || continue
+        dir=${script%/run.sh}
+        name=${dir##*/}
+        # pomiń nazwy, które nie nadają się na alias (spacje itp.)
+        [[ "$name" =~ ^[A-Za-z0-9_.-]+$ ]] || continue
+        alias_name="automation_${name//[.-]/_}"
+
+        alias "${alias_name}=$(printf '%q' "$script")"
+
+        comp=$(bash "$script" --bash-completion "$alias_name" 2>/dev/null)
+        [[ -n "$comp" ]] && eval "$comp"
+    done
+}
+_automation_setup
+unset -f _automation_setup
