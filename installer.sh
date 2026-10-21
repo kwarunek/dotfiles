@@ -46,6 +46,7 @@ init_base_cfg (){
     setup_link .config/waybar
     setup_link .config/foot
     setup_link .config/kanshi
+    setup_link .config/fuzzel
 
     # i3 on x11
     setup_link .config/i3
