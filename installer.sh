@@ -35,7 +35,6 @@ init_base_cfg (){
     setup_link .bash_functions.d
     setup_link .bash_profile
     setup_link .bash-preexec.sh
-    # setup_link .config/alacritty
     setup_link .config/atuin
     setup_link .config/bat
     setup_link .config/flake8
