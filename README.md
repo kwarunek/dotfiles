@@ -60,6 +60,7 @@ via system package manager (Debian: `system/debian_setup/*.sh`, run in order, `1
   - download: curl wget ca-certificates
   - crypto: gnupg gpg
   - shell: starship atuin
+  - printing: cups cups-browsed avahi-daemon, user added to `lpadmin` (web UI on http://localhost:631)
 - programming (`02_programming.sh`):
   - dev: build-essential g++ gcc make automake binutils bison
   - debug: gdb strace ltrace delve xxd
@@ -101,7 +102,8 @@ via krew:
   - misc (`system/debian_setup/13_misc.sh`):
     - notifications: dunst libnotify-bin
     - net: network-manager network-manager-gnome
-    - apps: keepassxc gimp libreoffice gedit (without recommends)
+    - apps: keepassxc gimp gedit (without recommends)
+    - office: libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3
 
 Manual stuff
 ------------
