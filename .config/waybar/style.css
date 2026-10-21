@@ -1,0 +1,84 @@
+* {
+    font-family: "Droid Sans Mono", monospace;
+    font-size: 12px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: #000000;
+    color: #ffffff;
+}
+
+#workspaces button {
+    padding: 0 6px;
+    margin: 1px 1px;
+    color: #888888;
+    background: #222222;
+    border: 1px solid #333333;
+}
+
+#workspaces button.visible {
+    color: #ffffff;
+    background: #5f676a;
+    border: 1px solid #333333;
+}
+
+#workspaces button.focused {
+    color: #ffffff;
+    background: #285577;
+    border: 1px solid #4c7899;
+}
+
+#workspaces button.urgent {
+    color: #ffffff;
+    background: #900000;
+    border: 1px solid #2f343a;
+}
+
+#workspaces button:hover {
+    box-shadow: none;
+    text-shadow: none;
+    background: #285577;
+}
+
+#mode {
+    color: #ffffff;
+    background: #900000;
+    border: 1px solid #2f343a;
+    padding: 0 6px;
+    margin: 1px 1px;
+}
+
+#wireplumber,
+#backlight,
+#network,
+#cpu,
+#memory,
+#battery,
+#clock,
+#tray {
+    padding: 0 6px;
+    border-right: 1px solid #666666;
+}
+
+#tray {
+    border-right: none;
+}
+
+#network.wifi,
+#network.ethernet,
+#battery.charging {
+    color: #00ff00;
+}
+
+#battery.warning,
+#wireplumber.muted {
+    color: #ffff00;
+}
+
+#network.disconnected,
+#battery.critical:not(.charging) {
+    color: #ff0000;
+}

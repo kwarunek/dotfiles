@@ -1,0 +1,61 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 22,
+    "spacing": 8,
+
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-right": ["wireplumber", "network", "cpu", "memory", "battery", "clock", "tray"],
+
+    "sway/workspaces": {
+        "disable-scroll": true
+    },
+
+    "sway/mode": {
+        "format": "[{}]"
+    },
+
+    "wireplumber": {
+        "format": "VOL {volume}%",
+        "format-muted": "VOL muted",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "scroll-step": 5,
+        "max-volume": 100
+    },
+
+    "network": {
+        "format-wifi": "{essid} {signalStrength}%",
+        "format-ethernet": "{ipaddr}",
+        "format-disconnected": "NET down",
+        "tooltip-format": "{ifname} {ipaddr}/{cidr} via {gwaddr}",
+        "interval": 5
+    },
+
+    "cpu": {
+        "format": "CPU {usage}%",
+        "interval": 5
+    },
+
+    "memory": {
+        "format": "MEM {percentage}%",
+        "interval": 10
+    },
+
+    "battery": {
+        "format": "BAT {capacity}%",
+        "format-charging": "BAT {capacity}% +",
+        "states": {
+            "warning": 25,
+            "critical": 10
+        }
+    },
+
+    "clock": {
+        "format": "{:%Y-%m-%d %H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>"
+    },
+
+    "tray": {
+        "spacing": 6
+    }
+}

@@ -37,9 +37,17 @@ init_base_cfg (){
     setup_link .bash-preexec.sh
     # setup_link .config/alacritty
     setup_link .config/atuin
-    setup_link .config/i3
+    setup_link .config/keepassxc
+
+    # sway on wayland
     setup_link .config/sway
+    setup_link .config/waybar
+    setup_link .config/foot
+
+    # i3 on x11
+    setup_link .config/i3
     setup_link .config/rofi
+
     setup_link .config/containers
     setup_link .config/starship.toml
     setup_link .config/tmux
