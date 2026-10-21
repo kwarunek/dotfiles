@@ -87,20 +87,21 @@ via krew:
 
 **desktop**:
 - x11 (i3, `system/debian_setup/10a_x11_i3.sh`):
-  - ui: i3 i3lock xss-lock i3status arandr dunst libnotify-bin feh xclip xinput rofi x11-xserver-utils
-  - net: network-manager network-manager-gnome
+  - ui: i3 i3lock xss-lock i3status arandr feh xclip xinput rofi x11-xserver-utils
   - term: lxterminal
   - sound: pasystray (tray)
 - wayland (sway, `system/debian_setup/10b_wayland_sway.sh`):
-  - ui: sway swaybg swayidle swaylock waybar fuzzel dunst libnotify-bin wl-clipboard
+  - ui: sway swaybg swayidle swaylock waybar fuzzel wl-clipboard
   - display: wdisplays wlr-randr kanshi
-  - net: network-manager
   - term: foot
 - common:
-  - brightness (`system/debian_setup/12_brightness.sh`, no root needed, user added to `video`): brightnessctl brightness-udev
   - sound (`system/debian_setup/09_sound.sh`): pipewire-audio pulseaudio-utils pavucontrol
-  - apps: keepassxc gimp libreoffice
   - browsers (`system/debian_setup/11_browsers.sh`, via extrepo): librewolf
+  - brightness (`system/debian_setup/12_brightness.sh`, no root needed, user added to `video`): brightnessctl brightness-udev
+  - misc (`system/debian_setup/13_misc.sh`):
+    - notifications: dunst libnotify-bin
+    - net: network-manager network-manager-gnome
+    - apps: keepassxc gimp libreoffice gedit (without recommends)
 
 Manual stuff
 ------------
