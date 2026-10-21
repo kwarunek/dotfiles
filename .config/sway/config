@@ -1,6 +1,6 @@
 set $mod Mod4
 set $term foot
-set $menu fuzzel --terminal=$term
+set $menu fuzzel
 
 font pango:Droid Sans Mono 8
 titlebar_border_thickness 0
