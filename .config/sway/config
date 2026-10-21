@@ -1,6 +1,6 @@
 set $mod Mod4
 set $term foot
-set $menu fuzzel
+set $menu fuzzel --terminal=$term
 
 font pango:Droid Sans Mono 8
 titlebar_border_thickness 0
@@ -20,7 +20,7 @@ input type:touchpad {
 
 output * bg ~/Pictures/wallpaper.jpg stretch
 
-# output DP-1 resolution 1920x1080 position 0,0
+exec kanshi
 
 exec swayidle -w \
     timeout 300 'swaylock -f -c 000000' \

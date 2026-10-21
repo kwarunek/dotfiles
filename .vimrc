@@ -88,8 +88,8 @@ map <F2> :NERDTreeToggle<CR>
 map <F4> <leader>c<space>
 
 " use arrow keys to move around buffers
-nnoremap <silent> <Left>   :bn<CR>
-nnoremap <silent> <Right>  :bp<CR>
+nnoremap <silent> <Left>   :bp<CR>
+nnoremap <silent> <Right>  :bn<CR>
 
 
 

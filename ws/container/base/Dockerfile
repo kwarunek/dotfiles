@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y \
     gzip \
     iproute2 \
     jq \
+    ripgrep \
+    yq \
     make \
     mysql-client \
     net-tools \
@@ -38,9 +40,11 @@ RUN curl -fsSL https://github.com/neovim/neovim/releases/latest/download/nvim-li
     ln -sf /opt/nvim/bin/nvim /usr/bin/nvim && \
     rm /tmp/nvim.tar.gz
 
-# Install yq
-RUN curl -fsSL https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o /usr/local/bin/yq && \
-    chmod +x /usr/local/bin/yq
+# Install tree-sitter cli (nvim-treesitter needs 0.26.1+, newer than the distro package)
+RUN curl -fsSL https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-x64.gz -o /tmp/tree-sitter.gz && \
+    gunzip /tmp/tree-sitter.gz && \
+    install -m 755 /tmp/tree-sitter /usr/local/bin/tree-sitter && \
+    rm /tmp/tree-sitter
 
 # Delete ubuntu user to avoid UID 1000 conflict and create configurable user
 ARG USERNAME=user

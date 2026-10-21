@@ -1,0 +1,8 @@
+profile laptop {
+    output eDP-1 enable mode 1920x1080@60.049Hz position 0,0 scale 1
+}
+
+profile docked {
+    output eDP-1 enable mode 1920x1080@60.049Hz position 0,0 scale 1
+    output * enable position 1920,0
+}

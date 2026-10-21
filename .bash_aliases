@@ -40,8 +40,13 @@ alias json2yaml="python3 -c 'import sys, yaml, json; yaml.dump(json.load(sys.std
 alias suroot="sudo -Es su -m"
 
 # clipboard
-alias cc='xclip -selection c -i'
-alias cv='xclip -selection c -o'
+if [[ -n "$WAYLAND_DISPLAY" ]]; then
+    alias cc='wl-copy'
+    alias cv='wl-paste --no-newline'
+else
+    alias cc='xclip -selection c -i'
+    alias cv='xclip -selection c -o'
+fi
 
 alias vi=vim
 alias nvimrc='nvim ~/.config/nvim/init.lua'

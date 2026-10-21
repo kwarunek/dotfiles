@@ -31,8 +31,8 @@ ws() {
                 echo "  --mem MB         Set container memory limit in MB (default: 1024)"
                 echo "  --pids N         Set max processes/threads (default: 256)"
                 echo "  -x              Run container without network"
-                echo "  --llm           Mount ~/.claude, ~/.codex, ~/.copilot read-write into"
-                echo "                  the image's own \$HOME (shared history + credentials)"
+                echo "  --llm           Use the ws-llm image and mount ~/$WS_CLAUDE_CONFIG_DIR_NAME, ~/.codex,"
+                echo "                  ~/.copilot read-write into the image's own \$HOME (shared history + credentials)"
                 echo "  -h, --help      Show this help message"
                 return 0
                 ;;

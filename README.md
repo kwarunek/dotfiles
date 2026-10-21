@@ -5,7 +5,7 @@ bash
 -----
 Some aliases, functions
 
- - colored grep, ls, diff if possible
+ - colored grep, ls if possible
  - `extract FILENAME` detect type and try to extract
  - `yaml2json`/`json2yaml`
  - increased history size, shell shared
@@ -15,40 +15,64 @@ Some aliases, functions
  - `ports` show ports stats
  - `rm-pyc`, `rm-DS` remove python pyc and mac DS files
  - `sha1`, `rot13`, `now`
- - `GET`, `POST`... with url make request
+ - `aws-use PROFILE [force]` - switch `AWS_PROFILE`, log in first when the session is gone
+   (SSO when the profile has `sso_session`, saml2aws otherwise), with profile completion
+ - `ws` - start a sandboxed podman workspace container, see `ws -h` and `ws/container/README.md`
 
 vim/neovim
 ----------
 
-vim: pathongen and plugins in `.gitmodules`.
-nvim: lazy-nvim
+**Common key bindings** (vim and nvim):
 
-**Additional key bindings**:
-
- - **F1** - toggles cursorline and an indentline marking
- - **F2** - toggles NERDtree/nvim-tree
- - **F3** - toggles nopaste
- - **F4** - (un)comments
  - **,**  - leader
+ - **F2** - toggles NERDTree/nvim-tree
  - **,nw** - clear trailing whitespaces
- - **,bc**  - close current buffer, preserve layout
  - **Ctrl+A**  - select all
- - **left arrow** - go to next buffer
- - **right arrow** - go to prev buffer
+ - **left arrow** - go to prev buffer
+ - **right arrow** - go to next buffer
+
+**vim**: pathogen, plugins in `.gitmodules` (NERDTree, nerdcommenter, airline, fugitive, indentLine, flake8, ...)
+
+ - **F1** - toggles cursorcolumn and an indentline marking
+ - **F3** - toggles paste
+ - **F4** - (un)comments
+ - **,bc**  - close current buffer, preserve layout
+
+**nvim**: lazy.nvim, plugins in `.config/nvim/lua/kwarunek/lazy/` (telescope, treesitter, nvim-tree, nvim-cmp + LuaSnip, Comment.nvim, cloak, fugitive, kanagawa, hardline)
+
+ - **F1** - toggles paste
+ - **gcc** / **gc** - (un)comments line / selection (Comment.nvim)
+ - **,ff** - telescope: find files
+ - **,fs** - telescope: live grep
+ - **,pws** / **,pWs** - telescope: grep word / WORD under cursor
+ - **Ctrl+P** - telescope: git files
+ - **gyb** / **gB** - base64 decode / encode in place (endec)
 
 pkg
 ---
 
 **Tooling**
 
-via system package manager:
-- general: bash vim neovim mc jq yq crudini 7zip bat
-- dev: g++ gcc make automake binutils bison
-- debug: gdb strace ltrace delve xdd
-- containers: podman runc skopeo
-- vcs: subversion git
-- net: whois net-tools tcpdump tcpflow dnsutils netcat-openbsd
-- db: postgresql-client mysql-client maridb-client sqlite3-tools
+via system package manager (Debian: `system/debian_setup/*.sh`, run in order, `10a`/`10b` are alternatives):
+- env (`01_env.sh`):
+  - general: bash vim mc jq yq crudini 7zip bat (+ `bat` -> `batcat` link) tmux screen fzf ncal sudo
+  - archives: bzip2 gzip tar unzip
+  - download: curl wget ca-certificates
+  - crypto: gnupg gpg
+  - shell: starship atuin
+- programming (`02_programming.sh`):
+  - dev: build-essential g++ gcc make automake binutils bison
+  - debug: gdb strace ltrace delve xxd
+  - python: python3 python3-pip python3-venv python3-yaml python3-requests
+- vcs (`03_vcs.sh`): git subversion mercurial glab meld
+- network (`04_network.sh`):
+  - diagnostics: iproute2 net-tools whois dnsutils netcat-openbsd
+  - sniffing: tcpdump tcpflow
+  - remote: openssh-client ldap-utils
+- containers (`05_containers.sh`): podman runc skopeo fuse-overlayfs slirp4netns uidmap
+- db (`06_db.sh`): postgresql-client sqlite3 sqlite3-tools
+- nvim (`07_nvim.sh`): ripgrep fd-find, neovim and tree-sitter cli from upstream releases
+- fonts (`08_fonts.sh`): Droid Sans Mono (AOSP) and MesloLGS Nerd Font (nerd-fonts), into `/usr/local/share/fonts`
 
 via asdf:
 - lang: golang rust python nodejs
@@ -61,22 +85,31 @@ via asdf:
 via krew:
 - ns ctx
 
-**ws**:
-- ui: i3 i3-lock i3status arandr dunst feh xclip rofi
-- net: network-manager
-- term: lxterminal starship
-- video: brightnessctl
-- sound: pulseaudio-utils
-- random: ldap-utils
-- x: keepassxc librewolf gimp libreoffice
+**desktop**:
+- x11 (i3, `system/debian_setup/10a_x11_i3.sh`):
+  - ui: i3 i3lock xss-lock i3status arandr dunst libnotify-bin feh xclip xinput rofi x11-xserver-utils
+  - net: network-manager network-manager-gnome
+  - term: lxterminal
+  - sound: pasystray (tray)
+- wayland (sway, `system/debian_setup/10b_wayland_sway.sh`):
+  - ui: sway swaybg swayidle swaylock waybar fuzzel dunst libnotify-bin wl-clipboard
+  - display: wdisplays wlr-randr kanshi
+  - net: network-manager
+  - term: foot
+- common:
+  - brightness (`system/debian_setup/12_brightness.sh`, no root needed, user added to `video`): brightnessctl brightness-udev
+  - sound (`system/debian_setup/09_sound.sh`): pipewire-audio pulseaudio-utils pavucontrol
+  - apps: keepassxc gimp libreoffice
+  - browsers (`system/debian_setup/11_browsers.sh`, via extrepo): librewolf
 
 Manual stuff
 ------------
 
-System wide configuration
-`system/ > /etc`
+System wide (`system/`, run or copy as root):
+- `drivers/<vendor>/etc/` - configuration to copy into `/etc`
+- `disable-ksm.sh` - disables Kernel Samepage Merging now and across reboots
+- `debian_setup/` - package installation scripts, see **pkg**
 
-Control birghtness without root:
-`sudo chmod +s $(which brightnessctl)`
+`installer.sh` does not link `bin/` on purpose, link or copy the needed scripts into `~/bin` by hand.
 
-Font `MesloLGS Nerd Font` (https://www.nerdfonts.com/font-downloads)
+Fonts `Droid Sans Mono` and `MesloLGS Nerd Font`: `system/debian_setup/08_fonts.sh`

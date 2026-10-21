@@ -20,7 +20,7 @@ init_repo_cfg (){
 init_nvim_cfg (){
     echo "Init nvim"
     setup_link ".config/nvim"
-    echo "alias vi=nvim" >> ~/.bash_local_aliases
+    grep -qxF "alias vi=nvim" ~/.bash_local_aliases 2>/dev/null || echo "alias vi=nvim" >> ~/.bash_local_aliases
 }
 
 init_base_cfg (){
@@ -37,16 +37,20 @@ init_base_cfg (){
     setup_link .bash-preexec.sh
     # setup_link .config/alacritty
     setup_link .config/atuin
+    setup_link .config/bat
+    setup_link .config/flake8
     setup_link .config/keepassxc
 
     # sway on wayland
     setup_link .config/sway
     setup_link .config/waybar
     setup_link .config/foot
+    setup_link .config/kanshi
 
     # i3 on x11
     setup_link .config/i3
     setup_link .config/rofi
+    setup_link .config/lxterminal
 
     setup_link .config/containers
     setup_link .config/starship.toml
@@ -60,6 +64,7 @@ init_base_cfg (){
 
     # common
     setup_link .profile
+    setup_link .curlrc
     setup_link .screenrc
 
     # psql
