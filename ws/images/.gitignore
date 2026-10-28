@@ -1,0 +1,3 @@
+# VM rootfs images and kernel, built locally by `ws -t vmm build`
+*
+!.gitignore

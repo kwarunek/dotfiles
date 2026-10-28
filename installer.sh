@@ -57,6 +57,7 @@ init_base_cfg (){
     setup_link .config/tmux
     setup_link .aws/cli/alias
 
+    setup_link ws
     setup_link automation
 
     # k8s

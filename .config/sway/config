@@ -129,7 +129,7 @@ bar {
     swaybar_command waybar
 }
 
-bindsym $mod+Shift+z exec zz
+bindsym $mod+Shift+z exec ~/bin/zz
 
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-

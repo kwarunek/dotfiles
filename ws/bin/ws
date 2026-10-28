@@ -1,0 +1,41 @@
+#!/bin/bash
+# ws: start a throwaway workspace sandbox.
+#   ws [-t container|vmm] [OPTIONS]   -t selects the sandbox (default container), the rest is passed through
+# Runs $WS_DIR/TYPE/ws-TYPE.py; see container/README.md (podman) and vmm/README.md (Cloud Hypervisor VM).
+
+WS_DIR=${WS_DIR:-"$HOME/ws"}
+type="container"
+args=()
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -t)
+            if [[ -z "${2:-}" ]]; then
+                echo "Error: -t requires container or vmm" >&2
+                exit 1
+            fi
+            type="$2"
+            shift 2
+            ;;
+        -h|--help)
+            echo "ws [-t container|vmm] ...  (-t selects the sandbox, default: container)"
+            args+=("$1")
+            shift
+            ;;
+        *)
+            args+=("$1")
+            shift
+            ;;
+    esac
+done
+
+case $type in
+    container|vmm) ;;
+    *)
+        echo "Error: unknown -t '$type', expected container or vmm" >&2
+        exit 1
+        ;;
+esac
+
+export WS_DIR
+exec python3 "$WS_DIR/$type/ws-$type.py" "${args[@]}"
