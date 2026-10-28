@@ -1,6 +1,9 @@
 dotfiles
 ========
 
+Available as `kwarunek/dotfiles` on [GitHub](https://github.com/kwarunek/dotfiles),
+[GitLab](https://gitlab.com/kwarunek/dotfiles) and [Codeberg](https://codeberg.org/kwarunek/dotfiles).
+
 bash
 -----
 Some aliases, functions
@@ -17,7 +20,8 @@ Some aliases, functions
  - `sha1`, `rot13`, `now`
  - `aws-use PROFILE [force]` - switch `AWS_PROFILE`, log in first when the session is gone
    (SSO when the profile has `sso_session`, saml2aws otherwise), with profile completion
- - `ws` - start a sandboxed podman workspace container, see `ws -h` and `ws/container/README.md`
+ - `ws` profiles in `.config/ws/profiles` (`base`, `llm`) for [ws](https://gitlab.com/kwarunek/ws),
+   throwaway sandboxed workspaces (podman container or Cloud Hypervisor VM), installed by `05_ws.sh`
 
 vim/neovim
 ----------
@@ -71,6 +75,8 @@ via system package manager (Debian: `system/debian_setup/*.sh`, run in order, `1
   - sniffing: tcpdump tcpflow
   - remote: openssh-client ldap-utils
 - containers (`05_containers.sh`): podman runc skopeo fuse-overlayfs slirp4netns uidmap
+- ws (`05_ws.sh`): latest `ws` .deb from the GitLab releases
+- vmm (`05b_vmm.sh`, for `ws run -t vmm`): virtiofsd e2fsprogs iproute2 nftables, cloud-hypervisor from upstream releases, user added to `kvm`
 - db (`06_db.sh`): postgresql-client sqlite3 sqlite3-tools
 - nvim (`07_nvim.sh`): ripgrep fd-find, neovim and tree-sitter cli from upstream releases
 - fonts (`08_fonts.sh`): Droid Sans Mono (AOSP) and MesloLGS Nerd Font (nerd-fonts), into `/usr/local/share/fonts`

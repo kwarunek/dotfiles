@@ -1,4 +1,4 @@
-FROM ws:latest
+FROM localhost/ws-base
 
 # Same default as the base image, so paths below match the baked-in user.
 ARG USERNAME=user
