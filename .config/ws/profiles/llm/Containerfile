@@ -25,19 +25,6 @@ RUN curl -fsSL https://opencode.ai/install | bash && \
 RUN curl -fsSL https://claude.ai/install.sh | bash && \
     claude --version
 
-# agentsview -> $HOME/.local/bin/agentsview (single Go binary from GH releases)
-RUN set -eux; \
-    arch="$(dpkg --print-architecture)"; \
-    ver="$(curl -fsSL -o /dev/null -w '%{url_effective}' \
-        https://github.com/kenn-io/agentsview/releases/latest | sed 's#.*/tag/v##')"; \
-    curl -fsSL "https://github.com/kenn-io/agentsview/releases/download/v${ver}/agentsview_${ver}_linux_${arch}.tar.gz" \
-        -o /tmp/agentsview.tar.gz; \
-    mkdir -p "${HOME}/.local/bin"; \
-    tar -xzf /tmp/agentsview.tar.gz -C "${HOME}/.local/bin" agentsview; \
-    chmod +x "${HOME}/.local/bin/agentsview"; \
-    rm /tmp/agentsview.tar.gz; \
-    agentsview --version
-
 WORKDIR /workspace
 
 CMD ["/bin/bash"]
