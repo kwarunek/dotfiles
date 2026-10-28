@@ -20,7 +20,7 @@ Some aliases, functions
  - `sha1`, `rot13`, `now`
  - `aws-use PROFILE [force]` - switch `AWS_PROFILE`, log in first when the session is gone
    (SSO when the profile has `sso_session`, saml2aws otherwise), with profile completion
- - `ws` profiles in `.config/ws/profiles` (`base`, `llm`) for [ws](https://gitlab.com/kwarunek/ws),
+ - `ws` profiles in `.config/ws/profiles.toml` (`default`, `llm`) and `.config/ws/containerfiles/` for [ws](https://gitlab.com/kwarunek/ws),
    throwaway sandboxed workspaces (podman container or Cloud Hypervisor VM), installed by `05_ws.sh`
 
 vim/neovim

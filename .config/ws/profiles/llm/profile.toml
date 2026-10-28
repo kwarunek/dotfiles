@@ -1,4 +1,0 @@
-# ws profile: host dirs under ~ mounted rw to the same path under the sandbox home (shared history + credentials)
-mounts = ["~/.claude-ws", "~/.codex", "~/.copilot"]
-env = { CLAUDE_CONFIG_DIR = "~/.claude-ws" }
-pass_env = ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GITHUB_TOKEN", "GH_TOKEN"]

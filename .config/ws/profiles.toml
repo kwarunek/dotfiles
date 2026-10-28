@@ -1,0 +1,24 @@
+# ws profiles; containerfile:// names are files in containerfiles/
+
+[default]
+image = "containerfile://base"
+type = "vmm"
+cpu = 1500
+mem = 1024
+pids = 256
+mounts = []
+env = {}
+pass_env = []
+build_args = {}
+
+[llm]
+image = "containerfile://llm"
+type = "vmm"
+cpu = 1500
+mem = 1024
+pids = 256
+# shared history + credentials
+mounts = ["~/.claude-ws", "~/.codex", "~/.copilot"]
+env = { CLAUDE_CONFIG_DIR = "~/.claude-ws" }
+pass_env = ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GITHUB_TOKEN", "GH_TOKEN"]
+build_args = {}
