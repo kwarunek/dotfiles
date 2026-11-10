@@ -23,6 +23,22 @@ Some aliases, functions
  - `ws` profiles in `.config/ws/profiles.toml` (`default`, `llm`) and `.config/ws/containerfiles/` for [ws](https://gitlab.com/kwarunek/ws),
    throwaway sandboxed workspaces (podman container or Cloud Hypervisor VM), installed by `05_ws.sh`
 
+ackstile
+--------
+Setup of ackstile (MCP approval gateway for agents), `./installer.sh ackstile`
+(also part of the default run). `~/.ackstile` is a real directory (700); only the versioned parts are linked into it:
+
+ - `.ackstile/config/config.yaml` - settings, no secrets (panel login via PAM, agent tokens issued in the panel)
+ - `.ackstile/automations/` - automations run on the host: `awscli`, `kubectl`, `jira-helpdesk`
+   (`schema.json`, `run.sh`, `*.example`), `.bash_setup` adds `automation_*` aliases
+ - `.config/systemd/user/ackstile.service.d/path.conf` - PATH for the automations (system `python3` before asdf shims)
+
+Local only, outside the repo (directories created by the installer with 700, paths also in `.gitignore`):
+`config/env` (systemd EnvironmentFile, 600), `config/tls/`, `config/automations/<name>/`
+(`profiles.conf`, `clusters.conf` seeded once from the examples, jira `config.toml` + `credentials.json.gpg`)
+and `data/ackstile.db`. The binary, the systemd unit and `config/env` come from ackstile's `make install`;
+`/etc/hosts` needs `127.0.0.1 ackstile.local mcp.ackstile.local` (root, by hand).
+
 vim/neovim
 ----------
 

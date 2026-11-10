@@ -14,11 +14,29 @@ build_args = {}
 [llm]
 image = "containerfile://llm"
 type = "vmm"
-cpu = 1500
-mem = 1024
-pids = 256
+cpu = 4000
+mem = 4096
+pids = 65535
 # shared history + credentials
 mounts = ["~/.claude-ws", "~/.codex", "~/.copilot"]
 env = { CLAUDE_CONFIG_DIR = "~/.claude-ws" }
 pass_env = ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GITHUB_TOKEN", "GH_TOKEN"]
 build_args = {}
+# ackstile MCP (https://mcp.ackstile.local:8765/mcp on the host's 127.0.0.1); needs ws >= 1.4.0
+host_ports = [8765]
+host_aliases = ["mcp.ackstile.local"]
+
+[llm-large]
+image = "containerfile://llm"
+type = "vmm"
+cpu = 8000
+mem = 8192
+pids = 65535
+# shared history + credentials
+mounts = ["~/.claude-ws", "~/.codex", "~/.copilot"]
+env = { CLAUDE_CONFIG_DIR = "~/.claude-ws" }
+pass_env = ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GITHUB_TOKEN", "GH_TOKEN"]
+build_args = {}
+# ackstile MCP (https://mcp.ackstile.local:8765/mcp on the host's 127.0.0.1); needs ws >= 1.4.0
+host_ports = [8765]
+host_aliases = ["mcp.ackstile.local"]

@@ -2,3 +2,12 @@ bin/zz
 bin/zx
 bin/maas*
 bin/paas*
+
+.ackstile/config/*
+!.ackstile/config/config.yaml
+.ackstile/data/
+.ackstile/automations/*/profiles.conf
+.ackstile/automations/*/clusters.conf
+.ackstile/automations/*/config.toml
+*.db*
+*.gpg

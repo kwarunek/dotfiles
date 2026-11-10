@@ -94,4 +94,4 @@ if command -v atuin &>/dev/null; then
     source ~/.bash_cache.d/atuin
 fi
 
-[[ -f ~/automation/.bash_setup ]] && source ~/automation/.bash_setup
+[[ -f ~/.ackstile/automations/.bash_setup ]] && source ~/.ackstile/automations/.bash_setup
